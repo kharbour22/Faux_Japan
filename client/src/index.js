@@ -5,7 +5,7 @@ import { createRoot } from "react-dom/client";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import ErrorPage from "./components/ErrorPage";
-import FoodList from "./components/FoodsList";
+import FoodList from "./components/FoodList";
 import DrinkList from "./components/DrinkList";
 import LoginForm from "./components/LoginForm";
 

@@ -4,6 +4,9 @@ import { useOutletContext } from "react-router-dom";
 import Food from "./Food"
 
 function FoodList() {
+
+    
+    
     const {foods, user} = useOutletContext()
 
     const foodsComponents = foods.map(food => (

@@ -58,6 +58,7 @@ function App() {
   return (
     <div>
       <NavBar/>
+      <Outlet context={{foods: foods}}/>
     </div>
   )
 }
