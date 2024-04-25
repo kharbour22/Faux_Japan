@@ -14,8 +14,8 @@ class Food(db.Model, SerializerMixin):
     price = db.Column(db.Float, nullable = False)
     gluten_free = db.Column(db.Boolean, nullable = False)
 
-    foodreviews = db.relationship('FoodReview', back_populates = 'food')
-    users = association_proxy('foodreviews', 'user', creator = lambda u: FoodReview(user = u))
+    # foodreviews = db.relationship('FoodReview', back_populates = 'food')
+    # users = association_proxy('foodreviews', 'user', creator = lambda u: FoodReview(user = u))
 
 
 class Drink(db.Model, SerializerMixin):
@@ -27,8 +27,8 @@ class Drink(db.Model, SerializerMixin):
     description = db.Column(db.String, nullable = False)
     price = db.Column(db.Float, nullable = False)
 
-    drinkreviews = db.relationship('Drinkreview', back_populates = 'drink')
-    users = association_proxy('drinkreviews', 'user', creator = lambda u: DrinkReview(user = u))
+    # drinkreviews = db.relationship('DrinkReview', back_populates = 'drink')
+    # users = association_proxy('drinkreviews', 'user', creator = lambda u: DrinkReview(user = u))
 
 class DrinkReview(db.Model, SerializerMixin):
     __tablename__ = 'drinkreviews'
@@ -40,8 +40,8 @@ class DrinkReview(db.Model, SerializerMixin):
     drink_id = db.Column(db.Integer, db.ForeignKey('drinks.id') )
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
 
-    drink = db.relationship('Drink', back_populates = 'drinkreviews')
-    user = db.relationship('User', back_populates = 'drinkreviews')
+    # drink = db.relationship('Drink', back_populates = 'drinkreviews')
+    # user = db.relationship('User', back_populates = 'drinkreviews')
 
 
 class FoodReview(db.Model, SerializerMixin):
@@ -54,8 +54,8 @@ class FoodReview(db.Model, SerializerMixin):
     food_id = db.Column(db.Integer,db.ForeignKey('foods.id') )
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
 
-    food = db.relationship('Food', back_populates = 'foodreviews')
-    user = db.relationship('User', back_populates = 'foodreviews')
+    # food = db.relationship('Food', back_populates = 'foodreviews')
+    # user = db.relationship('User', back_populates = 'foodreviews')
 
 class User(db.Model, SerializerMixin):
     __tablename__ = 'users'
@@ -66,11 +66,11 @@ class User(db.Model, SerializerMixin):
     password_hash = db.Column(db.String, nullable = False)
     type = db.Column(db.String, nullable = False)
 
-    foodreviews = db.relationship('FoodReview', back_populates = 'user', cascade='all')
-    drinkreviews = db.relationship('DrinkReview', back_populates = 'user', cascade='all')
+    # foodreviews = db.relationship('FoodReview', back_populates = 'user', cascade='all')
+    # drinkreviews = db.relationship('DrinkReview', back_populates = 'user', cascade='all')
 
-    foods = association_proxy('foodreviews', 'food', creator = lambda f: FoodReview(food = f))
-    drinks = association_proxy('drinkreviews', 'drink', creator = lambda d: DrinkReview(drink = d))
+    # foods = association_proxy('foodreviews', 'food', creator = lambda f: FoodReview(food = f))
+    # drinks = association_proxy('drinkreviews', 'drink', creator = lambda d: DrinkReview(drink = d))
 
 
 

@@ -45,12 +45,12 @@ function App() {
   useEffect(() => {
     fetch('/foodreviews')
     .then(response => response.json())
-    .then(foodReviewsData => setFoodreviews(foodReviewsData))
+    .then(foodreviewsData => setFoodreviews(foodreviewsData))
   }, [])
   useEffect(() => {
     fetch('/drinkreviews')
     .then(response => response.json())
-    .then(drinkReviewsData => setDrinkreviews(drinkReviewsData))
+    .then(drinkreviewsData => setDrinkreviews(drinkreviewsData))
   }, [])
   
 
