@@ -25,7 +25,7 @@ class Drink(db.Model, SerializerMixin):
     price = db.Column(db.Float, nullable = False)
 
 class DrinkReview(db.Model, SerializerMixin):
-    __tablename__ = 'drink_reviews'
+    __tablename__ = 'drinkreviews'
 
     id = db.Column(db.Integer, primary_key = True)
     rating = db.Column(db.Integer, nullable = False)
@@ -35,7 +35,7 @@ class DrinkReview(db.Model, SerializerMixin):
 
 
 class FoodReview(db.Model, SerializerMixin):
-    __tablename__ = 'food_reviews'
+    __tablename__ = 'foodreviews'
 
     id = db.Column(db.Integer, primary_key = True)
     rating = db.Column(db.Integer, nullable = False)
