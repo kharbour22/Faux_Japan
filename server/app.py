@@ -3,7 +3,7 @@
 # Standard library imports
 
 # Remote library imports
-from flask import request, make_response, session, request, Flask
+from flask import request, make_response, session, Flask
 from flask_restful import Resource
 from flask_bcrypt import Bcrypt
 
@@ -63,7 +63,7 @@ class DrinkbyID(Resource):
             }
             return make_response(response_body, 404)
         
-api.add_resource(DrinkbyID, 'drinks/<int:id>')
+api.add_resource(DrinkbyID, '/drinks/<int:id>')
 
 class AllUsers(Resource):
 
@@ -87,7 +87,7 @@ class UserByID(Resource):
 
             return make_response(response_body, 200)
         else:
-            response_body{
+            response_body = {
                 'error':'User Not Found'
             
             }
