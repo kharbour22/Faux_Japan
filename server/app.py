@@ -175,7 +175,7 @@ class FoodReviewByID(Resource):
             }
             return make_response(response_body, 404)
         
-api.add_resource(FoodReviewByID, 'foodreviews/<int:id>')
+api.add_resource(FoodReviewByID, '/foodreviews/<int:id>')
 
 class AllDrinkReviews(Resource):
 
