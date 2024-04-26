@@ -92,7 +92,7 @@ api.add_resource(FoodbyID, '/foods/<int:id>')
 class AllDrinks(Resource):
 
     def get(self):
-        response_body = [drink.to_dict(only = ('id', 'name', 'descrpition', 'price','image'))for drink in Drink.query.all()]
+        response_body = [drink.to_dict(only = ('id', 'name', 'description', 'price','image'))for drink in Drink.query.all()]
         return make_response(response_body, 200)
     def post (self):
         try:
