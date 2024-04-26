@@ -62,7 +62,7 @@ class DrinkReview(db.Model, SerializerMixin):
 
     id = db.Column(db.Integer, primary_key = True)
     rating = db.Column(db.Integer, nullable = False)
-    text = db.Column(db.String, nullable = False)
+    text = db.Column(db.String, nullable = True)
 
     drink_id = db.Column(db.Integer, db.ForeignKey('drinks.id') )
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
@@ -74,6 +74,8 @@ class DrinkReview(db.Model, SerializerMixin):
     def validate_rating(self, key, rating):
         if rating is None:
             raise ValueError("Rating is required.")
+        if not (1 <= rating <= 5):
+            raise ValueError("Rating must be between 1 and 5.")
         return rating
     
     @validates('drink_id')
@@ -88,7 +90,7 @@ class FoodReview(db.Model, SerializerMixin):
 
     id = db.Column(db.Integer, primary_key = True)
     rating = db.Column(db.Integer, nullable = False)
-    text = db.Column(db.String, nullable = False)
+    text = db.Column(db.String, nullable = True)
 
     food_id = db.Column(db.Integer,db.ForeignKey('foods.id') )
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
@@ -100,6 +102,8 @@ class FoodReview(db.Model, SerializerMixin):
     def validate_rating(self, key, rating):
         if rating is None:
             raise ValueError("Rating is required.")
+        if not (1 <= rating <= 5):
+            raise ValueError("Rating must be between 1 and 5.")
         return rating
     
     @validates('food_id')
