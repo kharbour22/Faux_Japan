@@ -1,5 +1,6 @@
 from sqlalchemy_serializer import SerializerMixin
 from sqlalchemy.ext.associationproxy import association_proxy
+from sqlalchemy.orm import validates
 
 from config import db
 
@@ -17,7 +18,19 @@ class Food(db.Model, SerializerMixin):
     foodreviews = db.relationship('FoodReview', back_populates = 'food')
     users = association_proxy('foodreviews', 'user', creator = lambda u: FoodReview(user = u))
 
-
+    @validates('name', 'image', 'description')
+    def validate_run(self, attr, value):
+        if (not isinstance(value, str)) or (len(value) == 0):
+            raise ValueError(f'Food must have a {attr}  ')
+        else:
+            return value
+    @validates('price')
+    def validate_price(self, key, price):
+        if not isinstance(price, float):
+            raise ValueError("Price must be a valid float value.")
+        else:
+            return price
+        
 class Drink(db.Model, SerializerMixin):
     __tablename__ = 'drinks'
 
@@ -30,6 +43,20 @@ class Drink(db.Model, SerializerMixin):
     drinkreviews = db.relationship('DrinkReview', back_populates = 'drink')
     users = association_proxy('drinkreviews', 'user', creator = lambda u: DrinkReview(user = u))
 
+    @validates('name', 'image', 'description')
+    def validate_run(self, attr, value):
+        if (not isinstance(value, str)) or (len(value) == 0):
+            raise ValueError(f'Drink must have a {attr}  ')
+        else:
+            return value
+        
+    @validates('price')
+    def validate_price(self, key, price):
+        if not isinstance(price, float):
+            raise ValueError("Price must be a valid float value.")
+        else:
+            return price
+        
 class DrinkReview(db.Model, SerializerMixin):
     __tablename__ = 'drinkreviews'
 
@@ -43,6 +70,18 @@ class DrinkReview(db.Model, SerializerMixin):
     drink = db.relationship('Drink', back_populates = 'drinkreviews')
     user = db.relationship('User', back_populates = 'drinkreviews')
 
+    @validates('rating')
+    def validate_rating(self, key, rating):
+        if rating is None:
+            raise ValueError("Rating is required.")
+        return rating
+    
+    @validates('drink_id')
+    def validate_drink_id(self, key, drink_id):
+        if drink_id is None:
+            raise ValueError("You must select a drink.")
+        return drink_id
+    
 
 class FoodReview(db.Model, SerializerMixin):
     __tablename__ = 'foodreviews'
@@ -57,6 +96,18 @@ class FoodReview(db.Model, SerializerMixin):
     food = db.relationship('Food', back_populates = 'foodreviews')
     user = db.relationship('User', back_populates = 'foodreviews')
 
+    @validates('rating')
+    def validate_rating(self, key, rating):
+        if rating is None:
+            raise ValueError("Rating is required.")
+        return rating
+    
+    @validates('food_id')
+    def validate_food_id(self, key, food_id):
+        if food_id is None:
+            raise ValueError("You must select a food item")
+        return food_id
+    
 class User(db.Model, SerializerMixin):
     __tablename__ = 'users'
 
@@ -73,7 +124,11 @@ class User(db.Model, SerializerMixin):
     drinks = association_proxy('drinkreviews', 'drink', creator = lambda d: DrinkReview(drink = d))
 
 
-
+    @validates('username', 'email', 'password_hash')
+    def validate_length(self, attr, value):
+        if len(value) < 5:
+            raise ValueError(f"{attr} must be at least 5 characters long.")
+        return value
 
 
 
