@@ -8,6 +8,7 @@ import ErrorPage from "./components/ErrorPage";
 import FoodList from "./components/FoodList";
 import DrinkList from "./components/DrinkList";
 import LoginForm from "./components/LoginForm";
+import FoodProfile from "./components/FoodProfile";
 
 
 const router = createBrowserRouter([
@@ -19,6 +20,10 @@ const router = createBrowserRouter([
             {
                 path: "/foods",
                 element: <FoodList/>
+            },
+            {
+                path: "/foods/:id",
+                element: <FoodProfile/>
             },
             {
                 path: "/drinks",
