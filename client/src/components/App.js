@@ -53,12 +53,148 @@ function App() {
     .then(drinkreviewsData => setDrinkreviews(drinkreviewsData))
   }, [])
   
+  function addFood(newFoodData){
+    fetch('/foods', {
+      method: "POST",
+      headers:{
+        "Content-Type":"application/json",
+        "Accept": "application/json"
+      },
+      body: JSON.stringify(newFoodData)
+    })
+    .then(response => response.json())
+    .then(newFoodData => setFoods([...foods, newFoodData]))
+  }
+
+  function addDrink(newDrinkData){
+    fetch('/drinks', {
+      method: "POST",
+      headers: {
+        "Content-Type":"application/json",
+        "Accept": "application/json"
+      },
+      body: JSON.stringify(newDrinkData)
+    })
+    .then(response => response.json())
+    .then(newDrinkData => setDrinks([...drinks, newDrinkData]))
+  }
+
+  function deleteDrink(id){
+    
+    fetch(`/drinks/${id}`, {
+        method: "DELETE"
+    })
+    .then(response => {
+        if(response.ok){
+            setDrinks(drinks => drinks.filter(drink => {
+                return drink.id !== id
+            }))
+            navigate('/drinks')
+        }
+        else if(response.status === 404){
+            response.json().then(errorData => alert(`Error: ${errorData.error}`))
+        }
+    })
+}
+
+  function deleteFood(id){
+    
+    fetch(`/foods/${id}`, {
+        method: "DELETE"
+    })
+    .then(response => {
+        if(response.ok){
+            setFoods(foods => foods.filter(food => {
+                return food.id !== id
+            }))
+            navigate('/foods')
+        }
+        else if(response.status === 404){
+            response.json().then(errorData => alert(`Error: ${errorData.error}`))
+        }
+    })
+}
+
+  function updateDrink(id, drinkDataForUpdate, setDrinkFromDrinkProfile){
+    
+    fetch(`/drinks/${id}`, {
+        method: "PATCH",
+        headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json"
+        },
+        body: JSON.stringify(drinkDataForUpdate)
+    })
+    .then(response => {
+        if(response.ok){
+            response.json().then(updatedDrinkData => {
+                setDrinkFromDrinkProfile(updatedDrinkData)
+                setDrinks(drinks => drinks.map(drink => {
+                    if(drink.id === updatedDrinkData.id){
+                        return updatedDrinkData
+                    }
+                    else{
+                        return drink
+                    }
+                }))
+            })
+        }
+        else if(response.status === 400 || response.status === 404){
+            response.json().then(errorData => {
+                alert(`Error: ${errorData.error}`)
+            })
+        }
+        else{
+            response.json().then(() => {
+                alert("Error: Something went wrong.")
+            })
+        }
+    })
+}
+
+  function updateFood(id, foodDataForUpdate, setFoodFromFoodProfile){
+    
+    fetch(`/foods/${id}`, {
+        method: "PATCH",
+        headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json"
+        },
+        body: JSON.stringify(foodDataForUpdate)
+    })
+    .then(response => {
+        if(response.ok){
+            response.json().then(updatedFoodData => {
+                setFoodFromFoodProfile(updatedFoodData)
+                setFoods(foods => foods.map(food => {
+                    if(food.id === updatedFoodData.id){
+                        return updatedFoodData
+                    }
+                    else{
+                        return food
+                    }
+                }))
+            })
+        }
+        else if(response.status === 400 || response.status === 404){
+            response.json().then(errorData => {
+                alert(`Error: ${errorData.error}`)
+            })
+        }
+        else{
+            response.json().then(() => {
+                alert("Error: Something went wrong.")
+            })
+        }
+    })
+}
+  
 
 
   return (
     <div>
       <NavBar/>
-      <Outlet context={{foods: foods, drinks: drinks}}/>
+      <Outlet context={{foods: foods, drinks: drinks, updateFood: updateFood, updateDrink: updateDrink, deleteFood: deleteFood, deleteDrink: deleteDrink, addFood: addFood, addDrink:addDrink}}/>
     </div>
   )
 }

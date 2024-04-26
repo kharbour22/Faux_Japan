@@ -10,6 +10,7 @@ import DrinkList from "./components/DrinkList";
 import LoginForm from "./components/LoginForm";
 import FoodProfile from "./components/FoodProfile";
 import DrinkProfile from "./components/DrinkProfile";
+import NewFoodForm from "./components/NewFoodForm";
 
 
 const router = createBrowserRouter([
@@ -31,8 +32,12 @@ const router = createBrowserRouter([
                 element: <DrinkList/>
             },
             {
-                path:"drinks/:id",
+                path:"/drinks/:id",
                 element: <DrinkProfile/>
+            },
+            {
+                path:"/add_food",
+                element: <NewFoodForm/>
             }
         ]
 

@@ -18,18 +18,18 @@ class Food(db.Model, SerializerMixin):
     foodreviews = db.relationship('FoodReview', back_populates = 'food')
     users = association_proxy('foodreviews', 'user', creator = lambda u: FoodReview(user = u))
 
-    @validates('name', 'image', 'description')
-    def validate_run(self, attr, value):
-        if (not isinstance(value, str)) or (len(value) == 0):
-            raise ValueError(f'Food must have a {attr}  ')
-        else:
-            return value
-    @validates('price')
-    def validate_price(self, key, price):
-        if not isinstance(price, float):
-            raise ValueError("Price must be a valid float value.")
-        else:
-            return price
+    # @validates('name', 'image', 'description')
+    # def validate_run(self, attr, value):
+    #     if (not isinstance(value, str)) or (len(value) == 0):
+    #         raise ValueError(f'Food must have a {attr}  ')
+    #     else:
+    #         return value
+    # @validates('price')
+    # def validate_price(self, key, price):
+    #     if not isinstance(price, float):
+    #         raise ValueError("Price must be a valid float value.")
+    #     else:
+    #         return price
         
 class Drink(db.Model, SerializerMixin):
     __tablename__ = 'drinks'
@@ -43,19 +43,19 @@ class Drink(db.Model, SerializerMixin):
     drinkreviews = db.relationship('DrinkReview', back_populates = 'drink')
     users = association_proxy('drinkreviews', 'user', creator = lambda u: DrinkReview(user = u))
 
-    @validates('name', 'image', 'description')
-    def validate_run(self, attr, value):
-        if (not isinstance(value, str)) or (len(value) == 0):
-            raise ValueError(f'Drink must have a {attr}  ')
-        else:
-            return value
+    # @validates('name', 'image', 'description')
+    # def validate_run(self, attr, value):
+    #     if (not isinstance(value, str)) or (len(value) == 0):
+    #         raise ValueError(f'Drink must have a {attr}  ')
+    #     else:
+    #         return value
         
-    @validates('price')
-    def validate_price(self, key, price):
-        if not isinstance(price, float):
-            raise ValueError("Price must be a valid float value.")
-        else:
-            return price
+    # @validates('price')
+    # def validate_price(self, key, price):
+    #     if not isinstance(price, float):
+    #         raise ValueError("Price must be a valid float value.")
+    #     else:
+    #         return price
         
 class DrinkReview(db.Model, SerializerMixin):
     __tablename__ = 'drinkreviews'

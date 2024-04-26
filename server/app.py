@@ -60,7 +60,7 @@ class FoodbyID(Resource):
                     setattr(food, attr, request.json[attr])
 
                 db.session.commit()
-                response_body = food.to_dict(only = ('name', 'image', 'description', 'price', 'gluten_free'))
+                response_body = food.to_dict(only = ('id','name', 'image', 'description', 'price', 'gluten_free'))
                 return make_response(response_body, 200)
             except:
                 response_body = {
@@ -132,7 +132,7 @@ class DrinkbyID(Resource):
                 for attr in request.json:
                     setattr(drink, attr, request.json[attr])
                 db.session.commit()
-                response_body = drink.to_dict(only = ('id', 'name', 'descrpition', 'price', 'image'))
+                response_body = drink.to_dict(only = ('id', 'name', 'description', 'price', 'image'))
                 return make_response(response_body, 200)
             except: 
                 response_body = {

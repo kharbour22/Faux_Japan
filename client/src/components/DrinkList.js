@@ -3,17 +3,19 @@ import { Link } from "react-router-dom";
 import { useOutletContext } from "react-router-dom";
 import Drink from "./Drink"
 
+
+
 function DrinkList() {
-    const {drinks, user} = useOutletContext()
+    const { drinks, user } = useOutletContext();
 
     const drinksComponent = drinks.map(drink => (
-        <Link key = {drink.id} to = {`/drinks/${drink.id}`}>
-            <Drink
-                drink = {drink}
-            />
-        </Link>
-
-    ))
+        <div key={drink.id}>
+            <Link to={`/drinks/${drink.id}`}>
+                <img src={drink.image} alt={drink.name} />
+            </Link>
+            <Drink drink={drink} />
+        </div>
+    ));
 
     function displayDrinkInfo() {
         if (user && user.type === 'admin') {
@@ -33,6 +35,7 @@ function DrinkList() {
             {user ? displayDrinkInfo() : null}
             <ul className="drink-list">{drinksComponent}</ul>
         </>
-    )
+    );
 }
-export default DrinkList
+
+export default DrinkList;

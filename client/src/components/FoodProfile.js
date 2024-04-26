@@ -55,8 +55,10 @@ function FoodProfile(){
         })
     }
 
-    function updateFormData(event){
-        setFormData({...formData, [event.target.name]:event.target.value})
+    function updateFormData(event) {
+        const { name, value, type, checked } = event.target;
+        const newValue = type === "checkbox" ? checked : value;
+        setFormData({ ...formData, [name]: newValue });
     }
 
     function displayButtonsOrEditForm(){
@@ -70,13 +72,17 @@ function FoodProfile(){
         } else{
             return(
                 <form onSubmit={handleSubmit} className="edit-food">
-                    <input onChange={updateFormData} type = "text" name = "name" placeholder="Food Name" value={formData.name}/>
-                    <input onChange={updateFormData} type = "text" name = "image" placeholder="Image" value={formData.image}/>
-                    <input onChange={updateFormData} type = "text" name = "description" placeholder="Description" value={formData.description}/>
-                    <input onChange={updateFormData} type = "number" name = "price" placeholder="Price" value={formData.price}/>
-                    <input onChange={updateFormData} type = "boolean" name = "gluten_free" placeholder="Gluten?" value={formData.gluten_free}/>
-                    <button type="submit">Save Changes</button>
-                </form>
+    <input onChange={updateFormData} type="text" name="name" placeholder="Food Name" value={formData.name} />
+    <input onChange={updateFormData} type="text" name="image" placeholder="Image" value={formData.image} />
+    <input onChange={updateFormData} type="text" name="description" placeholder="Description" value={formData.description} />
+    <input onChange={updateFormData} type="number" name="price" placeholder="Price" value={formData.price} />
+    <label>
+        Gluten Free:
+        <input onChange={updateFormData} type="checkbox" name="gluten_free" checked={formData.gluten_free} />
+    </label>
+    <button type="submit">Save Changes</button>
+</form>
+
             )
         }
     }
