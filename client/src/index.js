@@ -9,6 +9,7 @@ import FoodList from "./components/FoodList";
 import DrinkList from "./components/DrinkList";
 import LoginForm from "./components/LoginForm";
 import FoodProfile from "./components/FoodProfile";
+import DrinkProfile from "./components/DrinkProfile";
 
 
 const router = createBrowserRouter([
@@ -28,6 +29,10 @@ const router = createBrowserRouter([
             {
                 path: "/drinks",
                 element: <DrinkList/>
+            },
+            {
+                path:"drinks/:id",
+                element: <DrinkProfile/>
             }
         ]
 
