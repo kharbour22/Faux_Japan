@@ -51,11 +51,17 @@ if __name__ == '__main__':
 
         db.session.commit()
 
-        foodreview1 = FoodReview(food_id = 1, user_id=1, rating = 5, text = 'Amazing combo of citrus and spice!')
-        foodreview2 = FoodReview(food_id = 1, user_id = 2, rating = 5, text = '')
+        # foodreview1 = FoodReview(food_id = 1, user_id=3, rating = 5, text = 'Amazing combo of citrus and spice!')
+        # foodreview2 = FoodReview(food_id = 1, user_id = 2, rating = 5, text = '')
 
-        db.session.add_all([foodreview1, foodreview2])
+        # db.session.add_all([foodreview1, foodreview2])
 
-        db.session.commit()
+        # db.session.commit()
 
+        # drinkreview1 = DrinkReview(drink_id =1, user_id = 3, rating = 5, text = 'Interesting twist on a classic cocktail.')
+        # drinkreview2 = DrinkReview(drink_id = 2, user_id = 2, rating = 4, text = 'Definetly the signature drink here.')
+
+        # db.session.add_all([drinkreview1, drinkreview2])
+
+        # db.session.commit()
         print("Completed seeding!")

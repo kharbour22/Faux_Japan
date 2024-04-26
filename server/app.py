@@ -333,7 +333,7 @@ class AllFoodReviews(Resource):
         try:
             new_foodreview = FoodReview(rating = request.json.get('rating'), text = request.json.get('text'), user_id = request.json.get('user_id'), food_id = request.json.get('food_id') )
             db.session.add(new_foodreview)
-            db.session.commmit()
+            db.session.commit()
             response_body = new_foodreview.to_dict(rules = ('-food.foodreviews','-user.foodreviews','-user.password_hash'))
             return make_response(response_body, 201)
         except: 
@@ -382,13 +382,13 @@ class AllDrinkReviews(Resource):
         drink_review_list_with_dictionaries = [drinkreview.to_dict(rules=('-drink.drinkreviews', 'user.drinkreviews', '-user.password_hash')) for drinkreview in drinkreviews]
         return make_response(drink_review_list_with_dictionaries, 200)
     def post(self):
-         try:
+        try:
             new_drinkreview = DrinkReview(rating=request.json.get('rating'), text=request.json.get('text'), user_id=request.json.get('user_id'), drink_id=request.json.get('drink_id'))
             db.session.add(new_drinkreview)
             db.session.commit()
             response_body = new_drinkreview.to_dict(rules=('-drink.drinkreviews', '-user.drinkreviews', '-user.password_hash'))
             return make_response(response_body, 201)
-         except:
+        except:
             response_body = {
                 'error': 'Review must have a rating, text, user_id, and drink_id.'
             }
