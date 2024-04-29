@@ -10,12 +10,12 @@ class Food(db.Model, SerializerMixin):
 
     id = db.Column(db.Integer, primary_key = True)
     name = db.Column(db.String, nullable = False)
-    image = db.Column(db.String, nullable = True)
+    image = db.Column(db.String, nullable = False)
     description = db.Column(db.String, nullable = False)
     price = db.Column(db.Float, nullable = False)
     gluten_free = db.Column(db.Boolean, nullable = False)
 
-    foodreviews = db.relationship('FoodReview', back_populates = 'food')
+    foodreviews = db.relationship('FoodReview', back_populates = 'food', cascade = 'all')
     users = association_proxy('foodreviews', 'user', creator = lambda u: FoodReview(user = u))
 
     # @validates('name', 'image', 'description')
@@ -36,11 +36,11 @@ class Drink(db.Model, SerializerMixin):
 
     id = db.Column(db.Integer, primary_key = True)
     name = db.Column(db.String, nullable = False)
-    image = db.Column(db.String, nullable = True)
+    image = db.Column(db.String, nullable = False)
     description = db.Column(db.String, nullable = False)
     price = db.Column(db.Float, nullable = False)
 
-    drinkreviews = db.relationship('DrinkReview', back_populates = 'drink')
+    drinkreviews = db.relationship('DrinkReview', back_populates = 'drink', cascade = 'all')
     users = association_proxy('drinkreviews', 'user', creator = lambda u: DrinkReview(user = u))
 
     # @validates('name', 'image', 'description')
@@ -70,19 +70,19 @@ class DrinkReview(db.Model, SerializerMixin):
     drink = db.relationship('Drink', back_populates = 'drinkreviews')
     user = db.relationship('User', back_populates = 'drinkreviews')
 
-    @validates('rating')
-    def validate_rating(self, key, rating):
-        if rating is None:
-            raise ValueError("Rating is required.")
-        if not (1 <= rating <= 5):
-            raise ValueError("Rating must be between 1 and 5.")
-        return rating
+    # @validates('rating')
+    # def validate_rating(self, key, rating):
+    #     if rating is None:
+    #         raise ValueError("Rating is required.")
+    #     if not (1 <= rating <= 5):
+    #         raise ValueError("Rating must be between 1 and 5.")
+    #     return rating
     
-    @validates('drink_id')
-    def validate_drink_id(self, key, drink_id):
-        if drink_id is None:
-            raise ValueError("You must select a drink.")
-        return drink_id
+    # @validates('drink_id')
+    # def validate_drink_id(self, key, drink_id):
+    #     if drink_id is None:
+    #         raise ValueError("You must select a drink.")
+    #     return drink_id
     
 
 class FoodReview(db.Model, SerializerMixin):
@@ -98,19 +98,19 @@ class FoodReview(db.Model, SerializerMixin):
     food = db.relationship('Food', back_populates = 'foodreviews')
     user = db.relationship('User', back_populates = 'foodreviews')
 
-    @validates('rating')
-    def validate_rating(self, key, rating):
-        if rating is None:
-            raise ValueError("Rating is required.")
-        if not (1 <= rating <= 5):
-            raise ValueError("Rating must be between 1 and 5.")
-        return rating
+    # @validates('rating')
+    # def validate_rating(self, key, rating):
+    #     if rating is None:
+    #         raise ValueError("Rating is required.")
+    #     if not (1 <= rating <= 5):
+    #         raise ValueError("Rating must be between 1 and 5.")
+    #     return rating
     
-    @validates('food_id')
-    def validate_food_id(self, key, food_id):
-        if food_id is None:
-            raise ValueError("You must select a food item")
-        return food_id
+    # @validates('food_id')
+    # def validate_food_id(self, key, food_id):
+    #     if food_id is None:
+    #         raise ValueError("You must select a food item")
+    #     return food_id
     
 class User(db.Model, SerializerMixin):
     __tablename__ = 'users'

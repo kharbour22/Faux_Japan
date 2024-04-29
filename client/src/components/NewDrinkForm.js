@@ -29,7 +29,6 @@ function NewDrinkForm() {
             <input onChange={updateFormData} type="text" name="image" placeholder="Add Image" value={formData.image} />
             <input onChange={updateFormData} type="text" name="description" placeholder="Description" value={formData.description} />
             <input onChange={updateFormData} type="number" name="price" placeholder="Price" value={formData.price} />
-
             <input type="submit" value="Add Drink" />
         </form>
     );

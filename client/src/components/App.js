@@ -53,6 +53,20 @@ function App() {
     .then(drinkreviewsData => setDrinkreviews(drinkreviewsData))
   }, [])
   
+
+  function addFoodReview(newFoodReview){
+    fetch('/foodreviews', {
+        method: "POST",
+        headers: {
+            "Content-Type" : "application/json"
+        },
+        body: JSON.stringify(newFoodReview)
+    })
+    .then(response => response.json())
+    .then (newFoodReviewData => setFoodreviews([...foodReviews, newFoodReviewData]))
+  }
+
+
   function addFood(newFoodData){
     fetch('/foods', {
       method: "POST",
@@ -194,7 +208,7 @@ function App() {
   return (
     <div>
       <NavBar/>
-      <Outlet context={{foods: foods, drinks: drinks, updateFood: updateFood, updateDrink: updateDrink, deleteFood: deleteFood, deleteDrink: deleteDrink, addFood: addFood, addDrink:addDrink}}/>
+      <Outlet context={{foods: foods, drinks: drinks, updateFood: updateFood, updateDrink: updateDrink, deleteFood: deleteFood, deleteDrink: deleteDrink, addFood: addFood, addDrink:addDrink, addFoodReview: addFoodReview, foodReviews: foodReviews }}/>
     </div>
   )
 }

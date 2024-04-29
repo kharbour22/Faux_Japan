@@ -24,7 +24,7 @@ class AllFoods(Resource):
             new_food = Food(name = request.json.get('name'), image = request.json.get('image'), description = request.json.get('description'), price = request.json.get('price'), gluten_free = request.json.get('gluten_free'))
             db.session.add(new_food)
             db.session.commit()
-            response_body = new_food.to_dict(only = ('name', 'image', 'description', 'price', 'gluten_free'))
+            response_body = new_food.to_dict(only = ('id','name', 'image', 'description', 'price', 'gluten_free'))
             return make_response(response_body, 201)
         except:
             response_body = {
@@ -62,6 +62,7 @@ class FoodbyID(Resource):
                 db.session.commit()
                 response_body = food.to_dict(only = ('id','name', 'image', 'description', 'price', 'gluten_free'))
                 return make_response(response_body, 200)
+                
             except:
                 response_body = {
                     'error': 'Food must have a name, image, description, and price. Food cannot be the same as any other food and must be specified if gluten free.'
@@ -99,7 +100,7 @@ class AllDrinks(Resource):
             new_drink = Drink(name = request.json.get('name'), image = request.json.get('image'), description = request.json.get('description'), price = request.json.get('price'))
             db.session.add(new_drink)
             db.session.commit()
-            response_body = new_drink.to_dict(only = ('id', 'name', 'descrpition', 'price', 'image'))
+            response_body = new_drink.to_dict(only = ('id', 'name', 'description', 'price', 'image'))
             return make_response(response_body,201)
         except:
             response_body = {
@@ -273,7 +274,7 @@ class CheckSession(Resource):
         if(user):
             response_body = user.to_dict(rules=('-foodreviews.food','-drinkreviews.drink', '-foodreviews.user','-drinkreviews.user', '-password_hash'))
 
-            # Add in the association proxy data (The user's hotels) while removing duplicate hotel data for the user's hotels
+          
             response_body['foods'] = [food.to_dict(only =('id','name','image','description', 'price', 'gluten_free' )) for food in list(set(user.foods))]
             response_body['drinks'] = [drink.to_dict(only = ('id', 'name','image', 'descrpition', 'price')) for drink in list(set(user.drinks)) ]
 
