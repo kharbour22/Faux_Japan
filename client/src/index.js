@@ -14,6 +14,7 @@ import NewFoodForm from "./components/NewFoodForm";
 import NewDrinkForm from "./components/NewDrinkForm";
 import FoodReviewList from "./components/FoodReviewList";
 import NewFoodReviewForm from "./components/NewFoodReviewForm";
+import SignupForm from "./components/SignupForm";
 
 
 const router = createBrowserRouter([
@@ -53,6 +54,14 @@ const router = createBrowserRouter([
             {
                 path: "/add_review",
                 element: <NewFoodReviewForm/>
+            },
+            {
+                path: "/login",
+                element: <LoginForm/>
+            },
+            {
+                path: "/signup",
+                element: <SignupForm/>
             }
 
         ]

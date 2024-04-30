@@ -5,3 +5,14 @@
   --text: hsla(0, 0%, 100%, 0.88);
 }
 
+.navbar {
+  display: flex;
+  justify-content: space-between;
+}
+
+.nav-link {
+  /* Add styling for your links */
+  text-decoration: none;
+  color: #333;
+  padding: 10px;
+}

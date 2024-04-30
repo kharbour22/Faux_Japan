@@ -1,11 +1,12 @@
 #!/usr/bin/env python3
-
+import ipdb
 # Standard library imports
 
 # Remote library imports
 from flask import request, make_response, session, Flask
 from flask_restful import Resource
 from flask_bcrypt import Bcrypt
+
 
 # Local imports
 from config import app, db, api
@@ -170,7 +171,7 @@ class AllUsers(Resource):
         return make_response(user_list_with_dictionaries, 200)
     def post(self):
         try:
-            new_user = User(email = request.json.get('email'), username = request.json.get('username'), password_hash = request.json.get('password'), type = 'customer')
+            new_user = User(email = request.json.get('email'), username = request.json.get('username'), password_hash = request.json.get('password'), type = 'user')
             db.session.add(new_user)
             db.session.commit()
             response_body = new_user.to_dict(only = ('id', 'email', 'username', 'type'))
@@ -192,7 +193,7 @@ class UserByID(Resource):
             response_body = user.to_dict(rules = ('-foodreviews.food', '-drinkreviews.drink', '-foodreviews.user', '-drinkreviews.user', '-password_hash'))
               # Add in the association proxy data (The user's reviews) while removing duplicate food data for the user's foods   
             response_body['foods'] = [food.to_dict(only =('id','name','image','description', 'price', 'gluten_free' )) for food in list(set(user.foods))]
-            response_body['drinks'] = [drink.to_dict(only = ('id', 'name', 'descrpition', 'price')) for drink in list(set(user.drinks)) ]
+            response_body['drinks'] = [drink.to_dict(only=('id', 'name', 'description', 'price')) for drink in list(set(user.drinks))]
 
             return make_response(response_body, 200)
         else:
@@ -253,9 +254,9 @@ class Login(Resource):
             session['user_id'] = user.id
             response_body = user.to_dict(rules=('-foodreviews.food','-drinkreviews.drink', '-foodreviews.user','-drinkreviews.user', '-password_hash'))
 
-            # Add in the association proxy data (The user's hotels) while removing duplicate hotel data for the user's hotels
+            
             response_body['foods'] = [food.to_dict(only =('id','name','image','description', 'price', 'gluten_free' )) for food in list(set(user.foods))]
-            response_body['drinks'] = [drink.to_dict(only = ('id', 'name', 'descrpition', 'price')) for drink in list(set(user.drinks)) ]
+            response_body['drinks'] = [drink.to_dict(only=('id', 'name', 'description', 'price')) for drink in list(set(user.drinks))]
 
             return make_response(response_body, 201)
         else:
@@ -328,18 +329,19 @@ class AllFoodReviews(Resource):
 
     def get(self):
         foodreviews = FoodReview.query.all()
-        foodreview_list_with_dictionaries = [foodreview.to_dict(rules = ('-food.foodreviews', '-user.foodreviews', '-user.password_hash'))for foodreview in foodreviews]
+        foodreview_list_with_dictionaries = [foodreview.to_dict(only=('id','rating','text', 'food.name' ))for foodreview in foodreviews]
         return make_response(foodreview_list_with_dictionaries, 200)
     def post(self):
         try:
-            new_foodreview = FoodReview(rating = request.json.get('rating'), text = request.json.get('text'), user_id = request.json.get('user_id'), food_id = request.json.get('food_id') )
+            
+            new_foodreview = FoodReview(rating = request.json.get('rating'), text = request.json.get('text'), food_id = request.json.get('food_id'), user_id=request.json.get('user_id') )
             db.session.add(new_foodreview)
             db.session.commit()
-            response_body = new_foodreview.to_dict(rules = ('-food.foodreviews','-user.foodreviews','-user.password_hash'))
+            response_body = new_foodreview.to_dict(only=('id','rating','text', 'food_id', 'user_id'))
             return make_response(response_body, 201)
         except: 
             response_body = {
-                'error': 'Review must have a rating, text, user_id and food_id.'
+                'error': 'Review must have a rating, text, and food_id.'
             }
             return make_response(response_body, 400)
             
@@ -380,7 +382,7 @@ class AllDrinkReviews(Resource):
 
     def get(self):
         drinkreviews = DrinkReview.query.all()
-        drink_review_list_with_dictionaries = [drinkreview.to_dict(rules=('-drink.drinkreviews', 'user.drinkreviews', '-user.password_hash')) for drinkreview in drinkreviews]
+        drink_review_list_with_dictionaries = [drinkreview.to_dict(only=('id',)) for drinkreview in drinkreviews]
         return make_response(drink_review_list_with_dictionaries, 200)
     def post(self):
         try:

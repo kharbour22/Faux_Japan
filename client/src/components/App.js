@@ -52,18 +52,88 @@ function App() {
     .then(response => response.json())
     .then(drinkreviewsData => setDrinkreviews(drinkreviewsData))
   }, [])
+
+  function signUpUser(signupData){
+    fetch('/signup', {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json"
+        },
+        body: JSON.stringify(signupData)
+    })
+    .then(response => {
+        if(response.ok){
+            response.json().then(userData => {
+                setUser(userData)
+                navigate('/')
+            })
+        }
+        else if(response.status === 400){
+            response.json().then(errorData => alert(`Error: ${errorData.error}`))
+        }
+    })
+}
+
   
+  function logInUser(loginData){
+  
+    fetch('/login', {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json"
+        },
+        body: JSON.stringify(loginData)
+    })
+    .then(response => {
+        if(response.ok){
+            response.json().then(userData => {
+                setUser(userData)
+                navigate('/')
+            })
+        }
+        else if(response.status === 401){
+            response.json().then(errorData => alert(`Error: ${errorData.error}`))
+        }
+    })
+  }
+  
+  function logOutUser(){
+    
+    fetch('/logout', {
+        method: "DELETE"
+    })
+    .then(response => {
+        if(response.ok){
+            setUser(null)
+        }
+        else{
+            alert("Error: Unable to log user out!")
+        }
+    })
+  }
+
 
   function addFoodReview(newFoodReview){
     fetch('/foodreviews', {
         method: "POST",
         headers: {
-            "Content-Type" : "application/json"
+            "Content-Type" : "application/json",
+            "Accept":"application/json"
         },
         body: JSON.stringify(newFoodReview)
     })
-    .then(response => response.json())
-    .then (newFoodReviewData => setFoodreviews([...foodReviews, newFoodReviewData]))
+    .then(response => {
+        if (response.ok){
+            response.json().then (newFoodReviewData => setFoodreviews([...foodReviews, newFoodReviewData]))
+        }
+        else{
+            alert('error')
+        }
+       
+    })
+    
   }
 
 
@@ -207,8 +277,8 @@ function App() {
 
   return (
     <div>
-      <NavBar/>
-      <Outlet context={{foods: foods, drinks: drinks, updateFood: updateFood, updateDrink: updateDrink, deleteFood: deleteFood, deleteDrink: deleteDrink, addFood: addFood, addDrink:addDrink, addFoodReview: addFoodReview, foodReviews: foodReviews }}/>
+      <NavBar user = {user} logOutUser = {logOutUser}/>
+      <Outlet context={{foods: foods, drinks: drinks, updateFood: updateFood, updateDrink: updateDrink, deleteFood: deleteFood, deleteDrink: deleteDrink, addFood: addFood, addDrink:addDrink, addFoodReview: addFoodReview, foodReviews: foodReviews, logInUser: logInUser, signUpUser: signUpUser }}/>
     </div>
   )
 }
