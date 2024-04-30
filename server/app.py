@@ -116,7 +116,7 @@ class DrinkbyID(Resource):
         drink = db.session.get(Drink, id)
 
         if drink:
-            response_body = drink.to_dict(rules = ('-drinkreviews', 'drinkreviews.user'))
+            response_body = drink.to_dict(only = ('id', 'name', 'description', 'price','image'))
 
             return make_response(response_body, 200)
         else:
