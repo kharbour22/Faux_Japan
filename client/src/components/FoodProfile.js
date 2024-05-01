@@ -1,21 +1,20 @@
 import { useState, useEffect } from "react";
 import { useParams, useOutletContext, useNavigate } from "react-router-dom";
 
-
-function FoodProfile(){
-    const [food, setFood] = useState(null)
-    const [displayForm, setDisplayForm] = useState(false)
+function FoodProfile() {
+    const [food, setFood] = useState(null);
+    const [displayForm, setDisplayForm] = useState(false);
     const [formData, setFormData] = useState({
-        name:"",
-        image:"",
-        description:"",
+        name: "",
+        image: "",
+        description: "",
         price: "",
-        gluten_free:""
-    })
+        gluten_free: ""
+    });
 
-    const {id} = useParams()
-    const {deleteFood, updateFood} = useOutletContext()
-    const navigate = useNavigate()
+    const { id } = useParams();
+    const { deleteFood, updateFood } = useOutletContext();
+    const navigate = useNavigate();
 
     useEffect(() => {
         fetch(`/foods/${id}`)
@@ -39,20 +38,20 @@ function FoodProfile(){
             });
     }, [id]);
 
-    function handleDeleteButtonClick(){
-        deleteFood(food.id)
+    function handleDeleteButtonClick() {
+        deleteFood(food.id);
     }
 
-    function toggleDisplayForm(){
-        setDisplayForm(prevDisplayForm => !prevDisplayForm)
+    function toggleDisplayForm() {
+        setDisplayForm(prevDisplayForm => !prevDisplayForm);
     }
 
-    function handleSubmit(event){
-        event.preventDefault()
-        updateFood(food.id, formData, updateFood => {
-            setFood(updateFood)
-            toggleDisplayForm()
-        })
+    function handleSubmit(event) {
+        event.preventDefault();
+        updateFood(food.id, formData, updatedFood => {
+            setFood(updatedFood);
+            toggleDisplayForm();
+        });
     }
 
     function updateFormData(event) {
@@ -61,36 +60,45 @@ function FoodProfile(){
         setFormData({ ...formData, [name]: newValue });
     }
 
-    function displayButtonsOrEditForm(){
-        if (!displayForm){
-            return(
+    function displayButtonsOrEditForm() {
+        if (!displayForm) {
+            return (
                 <div className="button-div">
-                    <button onClick={toggleDisplayForm} className="update-button">Update Food</button>
-                    <button onClick={handleDeleteButtonClick} className="delete-button">Delete Food</button>
+                    <button onClick={toggleDisplayForm} className="update-button border border-green-600 rounded-md p-2 mr-2">Update Food</button>
+                    <button onClick={handleDeleteButtonClick} className="delete-button border border-red-600 rounded-md p-2">Delete Food</button>
                 </div>
-            )
-        } else{
-            return(
+            );
+        } else {
+            return (
                 <form onSubmit={handleSubmit} className="edit-food">
-    <input onChange={updateFormData} type="text" name="name" placeholder="Food Name" value={formData.name} />
-    <input onChange={updateFormData} type="text" name="image" placeholder="Image" value={formData.image} />
-    <input onChange={updateFormData} type="text" name="description" placeholder="Description" value={formData.description} />
-    <input onChange={updateFormData} type="number" name="price" placeholder="Price" value={formData.price} />
-    <label>
-        Gluten Free:
-        <input onChange={updateFormData} type="checkbox" name="gluten_free" checked={formData.gluten_free} />
-    </label>
-    <button type="submit">Save Changes</button>
-</form>
-
-            )
+                    <div className="border border-gray-300 rounded-md p-2 mb-2">
+                        <input onChange={updateFormData} type="text" name="name" placeholder="Food Name" value={formData.name} />
+                    </div>
+                    <div className="border border-gray-300 rounded-md p-2 mb-2">
+                        <input onChange={updateFormData} type="text" name="image" placeholder="Image" value={formData.image} />
+                    </div>
+                    <div className="border border-gray-300 rounded-md p-2 mb-2">
+                        <input onChange={updateFormData} type="text" name="description" placeholder="Description" value={formData.description} />
+                    </div>
+                    <div className="border border-gray-300 rounded-md p-2 mb-2">
+                        <input onChange={updateFormData} type="number" name="price" placeholder="Price" value={formData.price} />
+                    </div>
+                    <div className="border border-gray-300 rounded-md p-2 mb-2">
+                        <label>
+                            Gluten Free:
+                            <input onChange={updateFormData} type="checkbox" name="gluten_free" checked={formData.gluten_free} />
+                        </label>
+                    </div>
+                    <button type="submit" className="border border-blue-600 rounded-md p-2 mt-2">Save Changes</button>
+                </form>
+            );
         }
     }
+    
 
-
-    return(
-        <>
-            {food &&
+    return (
+        <div className="max-w-md mx-auto lg:ml-0">
+            {food && (
                 <div className="food-profile">
                     <img src={food.image} alt={food.name}/>
                     <h4>{food.name}</h4>
@@ -99,8 +107,9 @@ function FoodProfile(){
                     <h4>{food.gluten_free}</h4>
                     {displayButtonsOrEditForm()}
                 </div>
-            }
-        </>
-    )
+            )}
+        </div>
+    );
 }
-export default FoodProfile
+
+export default FoodProfile;

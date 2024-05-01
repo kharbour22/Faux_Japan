@@ -276,7 +276,7 @@ function App() {
 
 
   return (
-    <div>
+    <div className = "text-yellow-950">
       <NavBar user = {user} logOutUser = {logOutUser}/>
       <Outlet context={{foods: foods, drinks: drinks, updateFood: updateFood, updateDrink: updateDrink, deleteFood: deleteFood, deleteDrink: deleteDrink, addFood: addFood, addDrink:addDrink, addFoodReview: addFoodReview, foodReviews: foodReviews, logInUser: logInUser, signUpUser: signUpUser }}/>
     </div>

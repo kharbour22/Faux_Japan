@@ -7,11 +7,21 @@ function FoodList() {
     const { foods, user } = useOutletContext();
 
     const foodsComponents = foods.map(food => (
-        <div key={food.id}>
-            <Link to={`/foods/${food.id}`}>
-                <img src={food.image} alt={food.name} />
+        <div key={food.id} className="p-4 mb-4">
+            <Link to={`/foods/${food.id}`} className="block">
+                <div className="border border-black rounded-md p-4">
+                    <div className="flex items-center">
+                        <div className="mr-4">
+                            <img src={food.image} alt={food.name} className="rounded-md" />
+                        </div>
+                        <div>
+                            <h2 className="text-xl font-bold">{food.name}</h2>
+                            <p className="text-gray-600">{food.description}</p>
+                            <p className="text-gray-800 font-semibold">${food.price}</p>
+                        </div>
+                    </div>
+                </div>
             </Link>
-            <Food food={food} />
         </div>
     ));
 
@@ -29,9 +39,9 @@ function FoodList() {
 
     return (
         <>
-            <br/>
+            <br />
             {user ? displayFoodInfo() : null}
-            <ul className="food-list">{foodsComponents}</ul>
+            <div>{foodsComponents}</div>
         </>
     );
 }

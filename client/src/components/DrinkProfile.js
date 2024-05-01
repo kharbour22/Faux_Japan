@@ -62,18 +62,26 @@ function DrinkProfile(){
         if (!displayForm){
             return(
                 <div className="button-div">
-                    <button onClick={toggleDisplayForm} className="update-button">Update Drink</button>
-                    <button onClick={handleDeleteButtonClick} className="delete-button">Delete Drink</button>
+                    <button onClick={toggleDisplayForm} className="update-button border border-green-600 rounded-md p-2 mr-2">Update Drink</button>
+                    <button onClick={handleDeleteButtonClick} className="delete-button border border-red-600 rounded-md p-2">Delete Drink</button>
                 </div>
             )
         } else{
             return(
                 <form onSubmit={handleSubmit} className="edit-drink">
-                    <input onChange={updateFormData} type = "text" name = "name" placeholder="Drink Name" value={formData.name}/>
-                    <input onChange={updateFormData} type = "text" name = "image" placeholder="Image" value={formData.image}/>
-                    <input onChange={updateFormData} type = "text" name = "description" placeholder="Description" value={formData.description}/>
-                    <input onChange={updateFormData} type = "number" name = "price" placeholder="Price" value={formData.price}/>
-                    <button type="submit">Save Changes</button>
+                    <div className="border border-gray-300 rounded-md p-2 mb-2">
+                        <input onChange={updateFormData} type = "text" name = "name" placeholder="Drink Name" value={formData.name}/>
+                    </div>
+                    <div className="border border-gray-300 rounded-md p-2 mb-2">
+                        <input onChange={updateFormData} type = "text" name = "image" placeholder="Image" value={formData.image}/>
+                    </div>
+                    <div className="border border-gray-300 rounded-md p-2 mb-2">
+                        <input onChange={updateFormData} type = "text" name = "description" placeholder="Description" value={formData.description}/>
+                    </div>
+                    <div className="border border-gray-300 rounded-md p-2 mb-2">
+                        <input onChange={updateFormData} type = "number" name = "price" placeholder="Price" value={formData.price}/>
+                    </div>
+                    <button type="submit" className="border border-blue-600 rounded-md p-2 mt-2">Save Changes</button>
                 </form>
             )
         }

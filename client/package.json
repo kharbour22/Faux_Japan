@@ -18,7 +18,7 @@
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11"
   },
   "scripts": {
-    "build-css": "tailwindcss build -i src/styles.css -o public/styles.css",
+    "build-css": "tailwindcss build -i src/output.css -o public/output.css",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",

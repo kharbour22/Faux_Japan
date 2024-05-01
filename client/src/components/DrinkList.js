@@ -1,19 +1,27 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useOutletContext } from "react-router-dom";
-import Drink from "./Drink"
-
-
+import Drink from "./Drink";
 
 function DrinkList() {
     const { drinks, user } = useOutletContext();
 
     const drinksComponent = drinks.map(drink => (
-        <div key={drink.id}>
-            <Link to={`/drinks/${drink.id}`}>
-                <img src={drink.image} alt={drink.name} />
+        <div key={drink.id} className="p-4 mb-4">
+            <Link to={`/drinks/${drink.id}`} className="block">
+                <div className="border border-black rounded-md p-4">
+                    <div className="flex items-center">
+                        <div className="mr-4">
+                            <img src={drink.image} alt={drink.name} className="rounded-md" />
+                        </div>
+                        <div>
+                            <h2 className="text-xl font-bold">{drink.name}</h2>
+                            <p className="text-gray-600">{drink.description}</p>
+                            <p className="text-gray-800 font-semibold">${drink.price}</p>
+                        </div>
+                    </div>
+                </div>
             </Link>
-            <Drink drink={drink} />
         </div>
     ));
 
@@ -31,9 +39,9 @@ function DrinkList() {
 
     return (
         <>
-            <br/>
+            <br />
             {user ? displayDrinkInfo() : null}
-            <ul className="drink-list">{drinksComponent}</ul>
+            <div>{drinksComponent}</div>
         </>
     );
 }

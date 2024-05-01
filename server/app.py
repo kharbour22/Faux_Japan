@@ -329,11 +329,11 @@ class AllFoodReviews(Resource):
 
     def get(self):
         foodreviews = FoodReview.query.all()
-        foodreview_list_with_dictionaries = [foodreview.to_dict(only=('id','rating','text', 'food.name' ))for foodreview in foodreviews]
+        foodreview_list_with_dictionaries = [foodreview.to_dict(only=('id','rating','text', 'food.name','user_id' ))for foodreview in foodreviews]
         return make_response(foodreview_list_with_dictionaries, 200)
     def post(self):
         try:
-            
+            # ipdb.set_trace()
             new_foodreview = FoodReview(rating = request.json.get('rating'), text = request.json.get('text'), food_id = request.json.get('food_id'), user_id=request.json.get('user_id') )
             db.session.add(new_foodreview)
             db.session.commit()
