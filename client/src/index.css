@@ -8,9 +8,9 @@
 .navbar {
   display: flex;
   justify-content: space-between;
-  border: 2px solid #000; /* Set border width and color */
-  border-radius: 10px; /* Set border radius for rounded corners */
-  padding: 10px; /* Adjust padding as needed */
+  border: 2px solid #000; 
+  border-radius: 10px; 
+  padding: 10px; 
 }
 
 
@@ -21,6 +21,3 @@
   padding: 10px;
 }
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;

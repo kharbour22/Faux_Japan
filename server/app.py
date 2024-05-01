@@ -8,6 +8,7 @@ from flask_restful import Resource
 from flask_bcrypt import Bcrypt
 
 
+
 # Local imports
 from config import app, db, api
 # Add your model imports
@@ -305,7 +306,7 @@ class Signup(Resource):
         try:
             password = request.json.get('password')
             pw_hash = bcrypt.generate_password_hash(password).decode('utf-8')
-            new_user = User(email = request.json.get('email'), username = request.json.get('username'), password_hash = pw_hash, type = 'customer') 
+            new_user = User(email = request.json.get('email'), username = request.json.get('username'), password_hash = pw_hash, type = 'user') 
             db.session.add(new_user)
             db.session.commit()
             session['user_id'] = new_user.id

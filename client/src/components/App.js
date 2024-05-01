@@ -28,20 +28,20 @@ function App() {
             }
         })
   }, [user])
-  // useEffect(() => {
+//   useEffect(() => {
     
-  //   fetch('/check_session')
-  //   .then(response => {
-  //       if(response.ok){
-  //           response.json().then(userData => {
-  //               setUser(userData)
-  //           })
-  //       }
-  //       else if(response.status === 401){
-  //           navigate('/login')
-  //       }
-  //   })
-  // }, [])
+//     fetch('/check_session')
+//     .then(response => {
+//         if(response.ok){
+//             response.json().then(userData => {
+//                 setUser(userData)
+//             })
+//         }
+//         else if(response.status === 401){
+//             navigate('/login')
+//         }
+//     })
+//   }, [])
   useEffect(() => {
     fetch('/foodreviews')
     .then(response => response.json())
@@ -276,7 +276,7 @@ function App() {
 
 
   return (
-    <div className = "text-yellow-950">
+    <div>
       <NavBar user = {user} logOutUser = {logOutUser}/>
       <Outlet context={{foods: foods, drinks: drinks, updateFood: updateFood, updateDrink: updateDrink, deleteFood: deleteFood, deleteDrink: deleteDrink, addFood: addFood, addDrink:addDrink, addFoodReview: addFoodReview, foodReviews: foodReviews, logInUser: logInUser, signUpUser: signUpUser }}/>
     </div>

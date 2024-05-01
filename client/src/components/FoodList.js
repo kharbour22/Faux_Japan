@@ -9,7 +9,7 @@ function FoodList() {
     const foodsComponents = foods.map(food => (
         <div key={food.id} className="p-4 mb-4">
             <Link to={`/foods/${food.id}`} className="block">
-                <div className="border border-black rounded-md p-4">
+                <div>
                     <div className="flex items-center">
                         <div className="mr-4">
                             <img src={food.image} alt={food.name} className="rounded-md" />

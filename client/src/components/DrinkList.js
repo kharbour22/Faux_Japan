@@ -9,7 +9,7 @@ function DrinkList() {
     const drinksComponent = drinks.map(drink => (
         <div key={drink.id} className="p-4 mb-4">
             <Link to={`/drinks/${drink.id}`} className="block">
-                <div className="border border-black rounded-md p-4">
+                <div>
                     <div className="flex items-center">
                         <div className="mr-4">
                             <img src={drink.image} alt={drink.name} className="rounded-md" />
