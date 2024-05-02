@@ -9,7 +9,7 @@ const Home = () => {
             {/* Content */}
             <div className="relative z-10">
                 <section>
-                    <img src="/assets/logo.webp" alt="Sakanamono Home" className="h-90 w-90 rounded-lg" />
+                    <img src="/assets/Logo2.png" alt="Sakanamono Home" className="h-90 w-90 rounded-lg" />
                 </section>
                 
                 
