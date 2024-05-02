@@ -14,11 +14,13 @@ const Home = () => {
                 
                 
                 {/* Hours of Operation */}
-                <section className="mt-8 max-w-4xl mx-auto flex flex-col items-center">
-                    <h2 className="text-2xl font-semibold mb-2">Hours of Operation</h2>
-                    <p>Tues - Friday: 4:00pm - 10:00 PM</p>
-                    <p>Sunday - Monday: Closed</p>
+                <section className="mt-8 max-w-4xl mx-auto bg-blue-100 p-6 rounded-lg shadow h-auto md:h-50 w-full md:w-3/4 text-center">
+                    <h2 class="text-2xl font-semibold mb-2">Hours of Operation</h2>
+                    <p>Tuesday - Saturday : 4:00pm to 10:00pm</p>
+                    <p class="text-1xl font-semibold mb-1">Happy Hour</p>
+                    <p>4:00pm to 6:00pm</p>
                 </section>
+
 
                 
                 {/* Image Containers */}
@@ -38,10 +40,10 @@ const Home = () => {
                    </section>
 
                 {/* About Us Section */}
-                <section className="mt-8 max-w-4xl">
-                    <h2 className="text-2xl font-semibold mb-2">About Us</h2>
-                    <p>Welcome to Sakanamono, where the fish are fresher than your Monday memes and the vibes are as zen as a cat in a sunbeam.
-                    Our chefs are like culinary ninjas, wielding their knives with the precision of a master sushi sensei and the creativity of a manga artist. Each dish they craft is a work of edible art, a fusion of tradition and innovation that’ll make your taste buds do a happy dance.
+                <section class="mt-8 max-w-4xl bg-blue-100 p-6 rounded-lg shadow h-auto md:h-50 w-full md:w-3/4 mx-auto">
+                <h2 class="text-2xl font-semibold mb-2">About Us</h2>
+                <p>Welcome to Sakanamono, where the fish are fresher than your Monday memes and the vibes are as zen as a cat in a sunbeam.
+                Our chefs are like culinary ninjas, wielding their knives with the precision of a master sushi sensei and the creativity of a manga artist. Each dish they craft is a work of edible art, a fusion of tradition and innovation that’ll make your taste buds do a happy dance.
                     </p>
                 </section>
             </div>

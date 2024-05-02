@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" href="assets/nigiri.webp" />
+    <link rel="icon" href=assets/nigiri.webp" />
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link
       href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap"
@@ -24,7 +24,7 @@
       manifest.json provides metadata used when your web app is installed on a
       user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
     -->
-    <link rel="manifest" href="assets/nigiri.webp" />
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
     <!--
       Notice the use of %PUBLIC_URL% in the tags above.
       It will be replaced with the URL of the `public` folder during the build.
@@ -36,13 +36,16 @@
     -->
     <title>Sakanamono</title>
   </head>
-  <body class= "bg-blue-50 aspect-square">
+  <body class= "bg-blue-50 aspect-square flex flex-col min-h-screen">
 
     <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
+    <div id="root" class="flex-grow"></div>
     
 
-    
+    <footer class="w-full h-24 bg-no-repeat bg-cover bg-center border border-black" style="background-image: url('assets/Waves.png');">
+      <!-- Optionally add footer content here -->
+      
+    </footer>
     <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.

@@ -31,17 +31,16 @@ if __name__ == '__main__':
         password_1 = "kharbour"
         pw_hash_1 = bcrypt.generate_password_hash(password_1).decode('utf-8')
 
-        password_2 = "flatironschool"
+        password_2 = "winksdot"
         pw_hash_2 = bcrypt.generate_password_hash(password_2).decode('utf-8')
 
-        password_3 = "python"
-        pw_hash_3 = bcrypt.generate_password_hash(password_3).decode('utf-8')
+        
 
         user1 = User(email="kharbour22@gmail.com", username="kharbour", password_hash=pw_hash_1, type="admin")
-        user2 = User(email="bobisgood@AOL.com", username="bobcarris456", password_hash=pw_hash_2, type="user")
-        user3 = User(email= 'cdawg@geocities.com', username="cynthiadawson789", password_hash=pw_hash_3, type="user")
+        user2 = User(email="Dot@geocities.com", username="winksdot", password_hash=pw_hash_2, type="user")
+        
 
-        db.session.add_all([user1, user2, user3])
+        db.session.add_all([user1, user2])
 
         db.session.commit()
 
