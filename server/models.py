@@ -95,7 +95,7 @@ class FoodReview(db.Model, SerializerMixin):
     food_id = db.Column(db.Integer,db.ForeignKey('foods.id') )
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
 
-    food = db.relationship('Food', back_populates = 'foodreviews')
+    food = db.relationship('Food', back_populates = 'foodreviews', cascade = 'all')
     user = db.relationship('User', back_populates = 'foodreviews')
 
     @validates('rating')

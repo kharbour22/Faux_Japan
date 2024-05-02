@@ -107,6 +107,7 @@ function App() {
     .then(response => {
         if(response.ok){
             setUser(null)
+            navigate('/')
         }
         else{
             alert("Error: Unable to log user out!")
