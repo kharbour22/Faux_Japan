@@ -1,14 +1,15 @@
 import { useState, useEffect } from "react";
 import { useOutletContext, useNavigate } from "react-router-dom";
 
+
 function NewFoodReviewForm(){
     const [formData, setFormData] = useState({
         rating: 0,
         text: "",
-        user_id: null // Initialize user_id as null
+        user_id: null 
     });
 
-    const { foods, addFoodReview, user } = useOutletContext(); // Assuming user data is available from context
+    const { foods, addFoodReview, user } = useOutletContext(); 
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -16,9 +17,9 @@ function NewFoodReviewForm(){
             setFormData({...formData, food_id: foods[0].id});
         }
         if (user) {
-            setFormData({...formData, user_id: user.id}); // Set user_id to the ID of the logged-in user
+            setFormData({...formData, user_id: user.id}); 
         }
-    }, [foods, user]); // Update formData when foods or user change
+    }, [foods, user]); 
 
     const optionsElements = foods.map(food => (
         <option key={food.id} value={food.id}>{food.id}: {food.name}</option>
@@ -28,6 +29,8 @@ function NewFoodReviewForm(){
         const value = event.target.name === 'rating' ? parseInt(event.target.value) : event.target.value;
         setFormData({...formData, [event.target.name]: value});
     }
+
+    
 
     function handleSubmit(event){
         event.preventDefault();
@@ -46,6 +49,8 @@ function NewFoodReviewForm(){
         }
         return stars;
     }
+
+    
 
     return (
         <>

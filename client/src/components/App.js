@@ -28,20 +28,20 @@ function App() {
             }
         })
   }, [user])
-//   useEffect(() => {
+  useEffect(() => {
     
-//     fetch('/check_session')
-//     .then(response => {
-//         if(response.ok){
-//             response.json().then(userData => {
-//                 setUser(userData)
-//             })
-//         }
-//         else if(response.status === 401){
-//             navigate('/login')
-//         }
-//     })
-//   }, [])
+    fetch('/check_session')
+    .then(response => {
+        if(response.ok){
+            response.json().then(userData => {
+                setUser(userData)
+            })
+        }
+        else if(response.status === 401){
+            navigate('/login')
+        }
+    })
+  }, [])
   useEffect(() => {
     fetch('/foodreviews')
     .then(response => response.json())

@@ -278,7 +278,7 @@ class CheckSession(Resource):
 
           
             response_body['foods'] = [food.to_dict(only =('id','name','image','description', 'price', 'gluten_free' )) for food in list(set(user.foods))]
-            response_body['drinks'] = [drink.to_dict(only = ('id', 'name','image', 'descrpition', 'price')) for drink in list(set(user.drinks)) ]
+            response_body['drinks'] = [drink.to_dict(only = ('id', 'name','image', 'description', 'price')) for drink in list(set(user.drinks)) ]
 
             return make_response(response_body, 200)
         else:
