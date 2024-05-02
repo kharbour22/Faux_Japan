@@ -12,20 +12,30 @@ const Home = () => {
                     <img src="/assets/logo.webp" alt="Sakanamono Home" className="h-90 w-90 rounded-lg" />
                 </section>
                 
+                
                 {/* Hours of Operation */}
-                <section className="mt-8 max-w-4xl">
+                <section className="mt-8 max-w-4xl mx-auto flex flex-col items-center">
                     <h2 className="text-2xl font-semibold mb-2">Hours of Operation</h2>
                     <p>Tues - Friday: 4:00pm - 10:00 PM</p>
                     <p>Sunday - Monday: Closed</p>
                 </section>
+
                 
                 {/* Image Containers */}
-                <section className="mt-8 max-w-4xl grid grid-cols-2 gap-4">
-                    <div className="bg-gray-300 h-64">Image 1</div>
-                    <div className="bg-gray-300 h-32">Image 2</div>
-                    <div className="bg-gray-300 h-32">Image 3</div>
-                    <div className="bg-gray-300 h-64">Image 4</div>
-                </section>
+                <section className="mt-7 max-w-4xl grid grid-cols-2 gap-2 ">
+                    <div className="bg-gray-300 h-70 rounded-lg">
+                    <img src="assets/Dishes2.png" alt="Sunset" />
+                     </div>
+                    <div className="bg-gray-300 h-32 w-90 rounded-lg">
+                    <img src="assets/Dishes.png" alt="Image 2" />
+                    </div>
+                    <div className="bg-gray-300 h-32 w-0 rounded-lg">
+                    <img src="assets/Dishes2.png" alt="Image 3" />
+                    </div>
+                    <div className="bg-blue-50 h-64 w-80 rounded-lg">
+                    <img src="assets/Nabe.png" alt="Image 4" />
+                    </div>
+                   </section>
 
                 {/* About Us Section */}
                 <section className="mt-8 max-w-4xl">
