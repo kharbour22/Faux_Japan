@@ -16,6 +16,8 @@ import FoodReviewList from "./components/FoodReviewList";
 import NewFoodReviewForm from "./components/NewFoodReviewForm";
 import SignupForm from "./components/SignupForm";
 import Home from "./components/Home"
+import FoodListAdmin from "./components/FoodListAdmin";
+import DrinkListAdmin from "./components/DrinkListAdmin";
 
 
 const router = createBrowserRouter([
@@ -67,6 +69,14 @@ const router = createBrowserRouter([
             {
                 path: "/signup",
                 element: <SignupForm/>
+            },
+            {
+                path: "/foodsadmin",
+                element: <FoodListAdmin/>
+            },
+            {
+                path: "/drinksadmin",
+                element: <DrinkListAdmin/>
             }
 
         ]

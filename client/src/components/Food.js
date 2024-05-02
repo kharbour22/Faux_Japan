@@ -8,6 +8,8 @@ function Food({ food }) {
 
     return (
         <div>
+            
+            <h2>{food.image}</h2>
             <h2>{food.name}</h2>
             <h2>{food.description}</h2>
             <h2>{food.price}</h2>

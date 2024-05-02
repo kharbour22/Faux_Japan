@@ -3,12 +3,12 @@ import { Link } from "react-router-dom";
 import { useOutletContext } from "react-router-dom";
 import Food from "./Food";
 
-function FoodList() {
+function FoodListAdmin() {
     const { foods, user } = useOutletContext();
 
     const foodsComponents = foods.map(food => (
         <div key={food.id} className="p-4 mb-4">
-            
+            <Link to={`/foods/${food.id}`} className="block">
                 <div className="shadow-md rounded-md overflow-hidden">
                     <div className="flex items-center">
                         <div className="mr-4">
@@ -21,7 +21,7 @@ function FoodList() {
                         </div>
                     </div>
                 </div>
-            
+            </Link>
         </div>
     ));
 
@@ -48,4 +48,4 @@ function FoodList() {
     );
 }
 
-export default FoodList;
+export default FoodListAdmin;

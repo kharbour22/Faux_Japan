@@ -3,12 +3,12 @@ import { Link } from "react-router-dom";
 import { useOutletContext } from "react-router-dom";
 import Drink from "./Drink";
 
-function DrinkList() {
+function DrinkListAdmin() {
     const { drinks, user } = useOutletContext();
 
     const drinksComponent = drinks.map(drink => (
         <div key={drink.id} className="p-4 mb-4">
-            
+            <Link to={`/drinks/${drink.id}`} className="block">
                 <div className="shadow-md rounded-md overflow-hidden">
                     <div className="flex items-center">
                         <div className="mr-4">
@@ -21,7 +21,7 @@ function DrinkList() {
                         </div>
                     </div>
                 </div>
-            
+            </Link>
         </div>
     ));
 
@@ -48,4 +48,4 @@ function DrinkList() {
     );
 }
 
-export default DrinkList;
+export default DrinkListAdmin;

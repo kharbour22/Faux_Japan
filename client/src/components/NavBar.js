@@ -15,7 +15,13 @@ function NavBar({ user, logOutUser }) {
           <NavLink className="hover:text-blue-300 transition-colors duration-300" to="/add_food">Add Food</NavLink>
         )}
         {user && user.type === "admin" && (
+          <NavLink className="hover:text-blue-300 transition-colors duration-300" to="/foodsadmin">FoodsAdmin</NavLink>
+        )}
+        {user && user.type === "admin" && (
           <NavLink className="hover:text-blue-300 transition-colors duration-300" to="/add_drink">Add Drink</NavLink>
+        )}
+        {user && user.type === "admin" && (
+          <NavLink className="hover:text-blue-300 transition-colors duration-300" to="/drinksadmin">DrinksAdmin</NavLink>
         )}
         <NavLink className="hover:text-blue-300 transition-colors duration-300" to="/reviews">Reviews</NavLink>
         {user && user.type === "user" && (
