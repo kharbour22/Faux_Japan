@@ -15,6 +15,7 @@ import NewDrinkForm from "./components/NewDrinkForm";
 import FoodReviewList from "./components/FoodReviewList";
 import NewFoodReviewForm from "./components/NewFoodReviewForm";
 import SignupForm from "./components/SignupForm";
+import Home from "./components/Home"
 
 
 const router = createBrowserRouter([
@@ -23,6 +24,10 @@ const router = createBrowserRouter([
         element: <App/>,
         errorElement: <ErrorPage/>,
         children: [
+            {
+                path: "/",
+                element: <Home/>
+            },
             {
                 path: "/foods",
                 element: <FoodList/>

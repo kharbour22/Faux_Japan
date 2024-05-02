@@ -9,10 +9,10 @@ function FoodList() {
     const foodsComponents = foods.map(food => (
         <div key={food.id} className="p-4 mb-4">
             <Link to={`/foods/${food.id}`} className="block">
-                <div>
+                <div className="shadow-md rounded-md overflow-hidden">
                     <div className="flex items-center">
                         <div className="mr-4">
-                            <img src={food.image} alt={food.name} className="rounded-md" />
+                            <img src={food.image} alt={food.name} className="rounded-md w-40 h-40 object-cover" />
                         </div>
                         <div>
                             <h2 className="text-xl font-bold">{food.name}</h2>
@@ -41,7 +41,9 @@ function FoodList() {
         <>
             <br />
             {user ? displayFoodInfo() : null}
-            <div>{foodsComponents}</div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                {foodsComponents}
+            </div>
         </>
     );
 }

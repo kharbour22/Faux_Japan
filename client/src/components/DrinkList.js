@@ -9,10 +9,10 @@ function DrinkList() {
     const drinksComponent = drinks.map(drink => (
         <div key={drink.id} className="p-4 mb-4">
             <Link to={`/drinks/${drink.id}`} className="block">
-                <div>
+                <div className="shadow-md rounded-md overflow-hidden">
                     <div className="flex items-center">
                         <div className="mr-4">
-                            <img src={drink.image} alt={drink.name} className="rounded-md" />
+                            <img src={drink.image} alt={drink.name} className="rounded-md w-40 h-40 object-cover" />
                         </div>
                         <div>
                             <h2 className="text-xl font-bold">{drink.name}</h2>
@@ -41,7 +41,9 @@ function DrinkList() {
         <>
             <br />
             {user ? displayDrinkInfo() : null}
-            <div>{drinksComponent}</div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                {drinksComponent}
+            </div>
         </>
     );
 }
