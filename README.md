@@ -9,7 +9,7 @@ Sakanamono is a application designed to provide users with the ability to leave 
 
 1. Food and Drink Menu
 
-  - Users can view a list of food and drink items available at Sakanamono
+  - Users can view a list of food and drink items available at Sakanamono. They can toggle the food menu to only display gluten free items aswell!
 
 2. Review
 
