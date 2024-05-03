@@ -58,6 +58,8 @@ Sakanamono is a application designed to provide users with the ability to leave 
   In a seperate terminal
 
   ```
+  pipenv shell
+  
   cd client
 
   npm start

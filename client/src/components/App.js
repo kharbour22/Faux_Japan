@@ -130,7 +130,7 @@ function App() {
             response.json().then (newFoodReviewData => setFoodreviews([...foodReviews, newFoodReviewData]))
         }
         else{
-            alert('error')
+            alert('Error: You must select a Food and Rating ')
         }
        
     })
