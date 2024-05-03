@@ -13,7 +13,7 @@ function Food({ food }) {
             <h1 className="text-2xl font-bold">{food.name}</h1> 
             <h2>{food.description}</h2>
             <h2>{food.price}</h2>
-            {/* <a href={food.link}>Link</a> */}
+            
         </div>
     );
 }

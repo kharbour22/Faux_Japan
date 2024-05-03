@@ -7,7 +7,7 @@ function NewFoodForm() {
         image: "",
         description: "",
         price: "",
-        gluten_free: false // Initially set to false
+        gluten_free: false 
     });
     const { addFood } = useOutletContext();
     const navigate = useNavigate();

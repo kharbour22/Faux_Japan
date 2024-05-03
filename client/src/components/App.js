@@ -38,7 +38,7 @@ function App() {
             })
         }
         else if(response.status === 401){
-            navigate('/login')
+            
         }
     })
   }, [])

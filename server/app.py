@@ -338,7 +338,7 @@ class AllFoodReviews(Resource):
             new_foodreview = FoodReview(rating = request.json.get('rating'), text = request.json.get('text'), food_id = request.json.get('food_id'), user_id=request.json.get('user_id') )
             db.session.add(new_foodreview)
             db.session.commit()
-            response_body = new_foodreview.to_dict(only=('id','rating','text', 'food_id', 'user_id'))
+            response_body = new_foodreview.to_dict(only=('id','rating','text', 'food_id', 'user_id','food.name'))
             return make_response(response_body, 201)
         except: 
             response_body = {
