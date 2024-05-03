@@ -44,8 +44,8 @@ if __name__ == '__main__':
 
         db.session.commit()
 
-        drink1 = Drink(name = 'High Noon Old Fashioned', description = 'High West Bourbon, Barley Bitters, Lemon', price = 16.00, image = 'assets/Highnoon.png')
-        drink2 = Drink(name = 'Fiery Yu', description = 'Yuzu Honey, Thai Chili, Lemon', price = 14.00, image = 'assets/Fiery.png')
+        drink1 = Drink(name = 'High Noon Old Fashioned', description = 'High West Bourbon, Barley Bitters, Lemon', price = 16.00, image = '/assets/Highnoon.png')
+        drink2 = Drink(name = 'Fiery Yu', description = 'Yuzu Honey, Thai Chili, Lemon', price = 14.00, image = '/assets/Fiery.png')
 
         db.session.add_all([drink1, drink2])
 
