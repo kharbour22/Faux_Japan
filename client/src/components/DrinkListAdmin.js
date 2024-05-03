@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { useOutletContext } from "react-router-dom";
 import Drink from "./Drink";
 
-function DrinkListAdmin() {
+function DrinkList() {
     const { drinks, user } = useOutletContext();
 
     const drinksComponent = drinks.map(drink => (
@@ -48,4 +48,4 @@ function DrinkListAdmin() {
     );
 }
 
-export default DrinkListAdmin;
+export default DrinkList;
