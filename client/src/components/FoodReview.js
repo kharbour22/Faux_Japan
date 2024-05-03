@@ -1,12 +1,12 @@
+
 import Food from "./Food";
 
 function FoodReview({ foodreview }) {
     return (
-        <div className="border border-gray-300 rounded-lg p-4 my-4 max-w-md ">
-            
+        <div className="rounded-lg p-4 my-4 max-w-md shadow-lg" > {/* Adjusted classes here */}
             <Food food={foodreview.food} />
-            <h2 className="text-xl ">Rating: {foodreview.rating}/5</h2>
-            <p className="text-gray-600">{foodreview.text}</p>
+            <h2 className="text-xl">Rating: {foodreview.rating}/5</h2>
+            <p className="text-gray-700">{foodreview.text}</p>
         </div>
     );
 }

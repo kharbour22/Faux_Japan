@@ -1,19 +1,15 @@
-import React from "react";
 
 function Food({ food }) {
-   
-    if (!food) {
-        return <div>No food data available</div>;
-    }
-
     return (
-        <div>
-            
-            <h2>{food.image}</h2>
-            <h1 className="text-2xl font-bold">{food.name}</h1> 
-            <h2>{food.description}</h2>
-            <h2>{food.price}</h2>
-            
+        <div className=" shadow-md rounded-md overflow-hidden flex items-center">
+            <div className="mr-4">
+                <img src={food.image} alt={food.name} className="rounded-md w-40 h-40 object-cover" />
+            </div>
+            <div>
+                <h2 className="text-xl font-bold">{food.name}</h2>
+                <p className="text-gray-600">{food.description}</p>
+                {food.price && <p className="text-gray-800 font-semibold">${food.price}</p>}
+            </div>
         </div>
     );
 }
