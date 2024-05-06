@@ -14,6 +14,7 @@ class Food(db.Model, SerializerMixin):
     description = db.Column(db.String, nullable = False)
     price = db.Column(db.Float, nullable = False)
     gluten_free = db.Column(db.Boolean, nullable = False)
+    food_type = db.Column(db.String, nullable = True)
 
     foodreviews = db.relationship('FoodReview', back_populates = 'food', cascade = 'all')
     users = association_proxy('foodreviews', 'user', creator = lambda u: FoodReview(user = u))

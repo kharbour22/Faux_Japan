@@ -27,7 +27,21 @@ function FoodList() {
 
     const filteredFoods = showGlutenFree ? foods.filter(food => food.gluten_free) : foods;
 
-    const foodsComponents = filteredFoods.map(food => (
+    // Group foods by type (Cool, Hot, and Dessert)
+    const groupedFoods = filteredFoods.reduce((acc, food) => {
+        if (!acc[food.food_type]) {
+            acc[food.food_type] = [];
+        }
+        acc[food.food_type].push(food);
+        return acc;
+    }, {});
+
+    // Separate "Cool" and "Hot" items
+    const coolFoods = groupedFoods['Cool'] || [];
+    const hotFoods = groupedFoods['Hot'] || [];
+    const dessertFoods = groupedFoods['Dessert'] || [];
+
+    const foodsComponents = (foodsArr) => foodsArr.map(food => (
         <div key={food.id} className="p-4 mb-4">
             <div className="shadow-md rounded-md overflow-hidden">
                 <div className="flex items-center">
@@ -35,11 +49,10 @@ function FoodList() {
                         <img src={food.image} alt={food.name} className="rounded-md w-40 h-40 object-cover" />
                     </div>
                     <div>
-                        <h2 className="text-xl font-bold">{food.name}</h2>
+                        <h3 className="text-xl font-bold">{food.name}</h3>
                         <p className="text-gray-600">{food.description}</p>
                         <p className="text-gray-800 font-semibold">${food.price}</p>
                         <div className="text-gray-500">
-                            
                             {food.average_rating !== null ? (
                                 <StarRating rating={food.average_rating} />
                             ) : ""}
@@ -66,10 +79,28 @@ function FoodList() {
                 </label>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                {foodsComponents}
+                <div>
+                    <h2 className="text-2xl font-bold mt-6 mb-2">Cool Items</h2>
+                    <div className="flex flex-wrap">
+                        {foodsComponents(coolFoods)}
+                    </div>
+                </div>
+                <div>
+                    <h2 className="text-2xl font-bold mt-6 mb-2">Hot Items</h2>
+                    <div className="flex flex-wrap">
+                        {foodsComponents(hotFoods)}
+                    </div>
+                </div>
+            </div>
+            <div>
+            <h2 className="text-2xl font-bold mt-6 mb-2">Desserts</h2>
+                <div className="flex flex-wrap">
+                    {foodsComponents(dessertFoods)}
+                </div>
             </div>
         </>
     );
 }
+
 
 export default FoodList;

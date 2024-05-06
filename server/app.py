@@ -28,20 +28,20 @@ class AllFoods(Resource):
                 total_reviews = len(food.foodreviews)
                 average_rating = total_ratings / total_reviews if total_reviews > 0 else None
                 
-            food_dict = food.to_dict(only=('id', 'name', 'image', 'description', 'price', 'gluten_free'))
+            food_dict = food.to_dict(only=('id', 'name', 'image', 'description', 'price', 'gluten_free', 'food_type'))
             food_dict['average_rating'] = average_rating
             response_body.append(food_dict)
         return make_response(response_body, 200)
     def post(self):
         try:
-            new_food = Food(name = request.json.get('name'), image = request.json.get('image'), description = request.json.get('description'), price = request.json.get('price'), gluten_free = request.json.get('gluten_free'))
+            new_food = Food(name = request.json.get('name'), image = request.json.get('image'), description = request.json.get('description'), price = request.json.get('price'), gluten_free = request.json.get('gluten_free'), food_type = request.json.get('food_type'))
             db.session.add(new_food)
             db.session.commit()
-            response_body = new_food.to_dict(only = ('id','name', 'image', 'description', 'price', 'gluten_free'))
+            response_body = new_food.to_dict(only = ('id','name', 'image', 'description', 'price', 'gluten_free', 'food_type'))
             return make_response(response_body, 201)
         except:
             response_body = {
-                'error':'A food must have a name, image, description, and price. Specify if gluten free.'
+                'error':'A food must have a name, image, description, type and price. Specify if gluten free.'
             }
             return make_response(response_body, 400)
 
@@ -73,7 +73,7 @@ class FoodbyID(Resource):
                     setattr(food, attr, request.json[attr])
 
                 db.session.commit()
-                response_body = food.to_dict(only = ('id','name', 'image', 'description', 'price', 'gluten_free'))
+                response_body = food.to_dict(only = ('id','name', 'image', 'description', 'price', 'gluten_free', 'food_type'))
                 return make_response(response_body, 200)
                 
             except:

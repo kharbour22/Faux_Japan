@@ -21,9 +21,9 @@ if __name__ == '__main__':
 
         print("Starting seed...")
 
-        food1 = Food(name = 'Hama Chili', description = 'Ponzu, Thai Chili, Orange Supreme', price = 22.50, gluten_free = True, image = '/assets/HamaChili.png' )
-        food2 = Food(name = 'Walu Walu', description = 'Yuzu, Myoga, Escolar', price = 19.50, gluten_free = True, image = '/assets/Walu.png')
-        food3 = Food(name = 'Kinoko Nabe', description = 'Seasonal Mushrooms, Egg yolk, Koshihikari Rice', price = 21, gluten_free = False, image = '/assets/Nabe.png')
+        food1 = Food(name = 'Hama Chili', description = 'Ponzu, Thai Chili, Orange Supreme', price = 22.50, gluten_free = True, image = '/assets/HamaChili.png', food_type = 'Cool' )
+        food2 = Food(name = 'Walu Walu', description = 'Yuzu, Myoga, Escolar', price = 19.50, gluten_free = True, image = '/assets/Walu.png', food_type = 'Hot')
+        food3 = Food(name = 'Kinoko Nabe', description = 'Seasonal Mushrooms, Egg yolk, Koshihikari Rice', price = 21, gluten_free = False, image = '/assets/Nabe.png', food_type = 'Hot')
 
         db.session.add_all([food1, food2, food3])
         db.session.commit()

@@ -36,7 +36,7 @@ function DrinkProfile() {
 
     function handleDeleteButtonClick() {
         deleteDrink(drink.id);
-        navigate('/drinks'); // Redirect after delete
+        navigate('/drinks'); 
     }
 
     function toggleDisplayForm() {
