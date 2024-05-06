@@ -1,9 +1,8 @@
-
 function Food({ food }) {
     return (
-        <div className=" shadow-md rounded-md overflow-hidden flex items-center">
+        <div className="shadow-md rounded-md overflow-hidden flex items-center w-72 h-48">
             <div className="mr-4">
-                <img src={food.image} alt={food.name} className="rounded-md w-40 h-40 object-cover" />
+                <img src={food.image} alt={food.name} className="rounded-md w-24 h-24 object-cover" />
             </div>
             <div>
                 <h2 className="text-xl font-bold">{food.name}</h2>
