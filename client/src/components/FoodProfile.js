@@ -9,7 +9,8 @@ function FoodProfile() {
         image: "",
         description: "",
         price: "",
-        gluten_free: false
+        gluten_free: false,
+        food_type: ""
     });
 
     const { id } = useParams();
@@ -82,6 +83,22 @@ function FoodProfile() {
                         value={formData.name}
                         className="block w-full border border-gray-400 rounded-md py-2 px-4"
                     />
+                    <div className="flex items-center">
+                    <label className="mr-2">Food Type:</label>
+                    <select
+                        onChange={updateFormData}
+                        name="food_type"
+                        value={formData.food_type}
+                        className="border border-gray-400 rounded-md py-2 px-4"
+                    >
+                        <option value="">Select Food Type</option>
+                        <option value="Cool">Cool</option>
+                        <option value="Hot">Hot</option>
+                        <option value = "Daily Specials">Daily Specials</option>
+                        <option value= "Dessert">Dessert</option>
+
+                    </select>
+                </div>
                     <input
                         onChange={updateFormData}
                         type="text"
@@ -98,6 +115,7 @@ function FoodProfile() {
                         value={formData.description}
                         className="block w-full border border-gray-400 rounded-md py-2 px-4"
                     />
+                    
                     <input
                         onChange={updateFormData}
                         type="number"
