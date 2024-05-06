@@ -1,15 +1,42 @@
+import { useState } from "react";
 import FoodReview from "./FoodReview";
 import { useOutletContext } from "react-router-dom";
 
 function FoodReviewList() {
-    const {foodReviews} = useOutletContext()
+    const {foodReviews} = useOutletContext();
+    const [filter, setFilter] = useState("");
 
-    const foodreviewComponents = foodReviews.map(foodreview => {
-        return <FoodReview key = {foodreview.id} foodreview = {foodreview}/>
-    })
+    const handleChange = (event) => {
+        setFilter(event.target.value);
+    };
 
-    return <ul>{foodreviewComponents}</ul>
+    
+    const filteredReviews = foodReviews.filter(foodreview =>
+        foodreview.food.name.toLowerCase().includes(filter.toLowerCase())
+    );
+
+    const foodreviewComponents = filteredReviews.map(foodreview => (
+        <FoodReview key={foodreview.id} foodreview={foodreview}/>
+    ));
+
+    return (
+    <div className="flex flex-col items-center justify-center mt-4">
+        <div className="w-full max-w-xs "> 
+            <input
+                type="text"
+                placeholder="Filter by food name..."
+                value={filter}
+                onChange={handleChange}
+                className="mb-4 p-2 w-full border border-black rounded"
+            />
+        </div>
+        <ul className="flex flex-wrap justify-center w-full">
+            {foodreviewComponents}
+        </ul>
+    </div>
+);
 
 }
 
-export default FoodReviewList
+
+export default FoodReviewList;
