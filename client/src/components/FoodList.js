@@ -1,16 +1,18 @@
 import React, { useState } from "react";
 import { useOutletContext } from "react-router-dom";
 
-function StarRating({ rating }) {
-    const filledStars = Math.floor(rating); // Using floor to avoid partial stars
-    const halfStar = rating % 1 >= 0.5 ? 1 : 0; // Determine if a half star is needed
-    const emptyStars = 5 - filledStars - halfStar;
+function StarRating({ rating = 0 }) {
+    const safeRating = Math.min(Math.max(0, rating), 5); // Clamp rating to be between 0 and 5
+    const filledStars = Math.floor(safeRating); // Using floor to avoid partial stars
+    const halfStar = safeRating % 1 >= 0.5 ? 1 : 0; // Determine if a half star is needed
+    const emptyStars = 5 - filledStars - halfStar; // Calculate empty stars ensuring non-negative result
+
     return (
         <div className="flex items-center">
             {Array(filledStars).fill().map((_, i) => <span key={i} className="text-yellow-400">&#9733;</span>)}
             {halfStar === 1 && <span className="text-yellow-400">&#9734;</span>} 
             {Array(emptyStars).fill().map((_, i) => <span key={i} className="text-gray-300">&#9733;</span>)}
-            <span className="ml-2 text-sm text-gray-600">({rating.toFixed(1)})</span>
+            <span className="ml-2 text-sm text-gray-600">({safeRating.toFixed(1)})</span>
         </div>
     );
 }
