@@ -66,8 +66,21 @@ if __name__ == '__main__':
 
         foodreview1 = FoodReview(food_id = 1, user_id=3, rating = 5, text = 'Amazing combo of citrus and spice!')
         foodreview2 = FoodReview(food_id = 1, user_id = 2, rating = 5, text = '')
+        foodreview3 = FoodReview(food_id = 1, user_id = 2, rating = 4, text = 'Little spicy but so good')
+        foodreview4 = FoodReview(food_id = 3, user_id = 2, rating = 5, text = 'I hate mushrooms but i love this!')
+        foodreview5 = FoodReview(food_id = 3, user_id = 2, rating = 3, text = 'Burnt')
+        foodreview6 = FoodReview(food_id = 2, user_id = 2, rating = 2, text = 'Made me sick!')
+        foodreview7 = FoodReview(food_id = 2, user_id = 2, rating = 5, text = 'Best.Fish.Ever.')
+        foodreview8 = FoodReview(food_id = 7, user_id = 2, rating = 5, text = 'OMG!')
+        foodreview9 = FoodReview(food_id = 4, user_id = 2, rating = 3, text = 'A little bland')
+        foodreview10 = FoodReview(food_id = 4, user_id = 2, rating = 5, text = '')
+        foodreview11 = FoodReview(food_id = 8, user_id = 2, rating = 4, text = 'Great gluten free option')
+        foodreview12 = FoodReview(food_id = 6, user_id = 2, rating = 3, text = 'Small portion for the price')
+        foodreview13 = FoodReview(food_id = 6, user_id = 2, rating = 4, text = '')
+        foodreview14 = FoodReview(food_id = 6, user_id = 2, rating = 5, text = '')
+        foodreview15 = FoodReview(food_id = 9, user_id = 2, rating = 5, text = 'A must get!')
 
-        db.session.add_all([foodreview1, foodreview2])
+        db.session.add_all([foodreview1, foodreview2, foodreview3, foodreview4, foodreview5, foodreview6, foodreview7, foodreview8, foodreview9, foodreview10, foodreview11, foodreview12, foodreview13, foodreview14, foodreview15])
 
         db.session.commit()
 
