@@ -101,11 +101,11 @@ function FoodList() {
                 </div>
             </div>
             <div>
-                <h2 className="text-2xl font-bold mt-6 mb-2 pb-2 text-center">Desserts</h2>
-                <div className="flex flex-wrap">
-                    {foodsComponents(dessertFoods)}
-                </div>
-            </div>
+    <h2 className="text-2xl font-bold mt-6 mb-2 pb-2 text-center">Desserts</h2>
+    <div className="flex">
+        {foodsComponents(dessertFoods)}
+    </div>
+</div>
         </>
     );
 }
