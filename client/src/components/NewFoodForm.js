@@ -71,7 +71,9 @@ function NewFoodForm() {
                         <option value="">Select Food Type</option>
                         <option value="Cool">Cool</option>
                         <option value="Hot">Hot</option>
+                        <option value = "Daily Specials">Daily Specials</option>
                         <option value= "Dessert">Dessert</option>
+
                     </select>
                 </div>
                 <div className="flex items-center">

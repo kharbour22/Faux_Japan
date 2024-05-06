@@ -40,6 +40,7 @@ function FoodList() {
     const coolFoods = groupedFoods['Cool'] || [];
     const hotFoods = groupedFoods['Hot'] || [];
     const dessertFoods = groupedFoods['Dessert'] || [];
+    const dailySpecials = groupedFoods['Daily Specials'] || [];
 
     const foodsComponents = (foodsArr) => foodsArr.map(food => (
         <div key={food.id} className="p-4 mb-4">
@@ -80,20 +81,26 @@ function FoodList() {
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 <div>
-                    <h2 className="text-2xl font-bold mt-6 mb-2">Cool Items</h2>
+                    <h2 className="text-2xl font-bold mt-6 mb-2 border-b pb-2">Cool Dishes</h2>
                     <div className="flex flex-wrap">
                         {foodsComponents(coolFoods)}
                     </div>
                 </div>
                 <div>
-                    <h2 className="text-2xl font-bold mt-6 mb-2">Hot Items</h2>
+                    <h2 className="text-2xl font-bold mt-6 mb-2 border-b pb-2">Hot Dishes</h2>
                     <div className="flex flex-wrap">
                         {foodsComponents(hotFoods)}
                     </div>
                 </div>
+                <div>
+                    <h2 className="text-2xl font-bold mt-6 mb-2 border-b pb-2">Daily Specials</h2>
+                    <div className="flex flex-wrap">
+                        {foodsComponents(dailySpecials)}
+                    </div>
+                </div>
             </div>
             <div>
-            <h2 className="text-2xl font-bold mt-6 mb-2">Desserts</h2>
+                <h2 className="text-2xl font-bold mt-6 mb-2 border-b pb-2">Desserts</h2>
                 <div className="flex flex-wrap">
                     {foodsComponents(dessertFoods)}
                 </div>
@@ -101,6 +108,5 @@ function FoodList() {
         </>
     );
 }
-
 
 export default FoodList;
