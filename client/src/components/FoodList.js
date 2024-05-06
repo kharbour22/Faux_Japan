@@ -1,12 +1,24 @@
 import React, { useState } from "react";
 import { useOutletContext } from "react-router-dom";
-import Food from "./Food";
+
+function StarRating({ rating }) {
+    const filledStars = Math.floor(rating); // Using floor to avoid partial stars
+    const halfStar = rating % 1 >= 0.5 ? 1 : 0; // Determine if a half star is needed
+    const emptyStars = 5 - filledStars - halfStar;
+    return (
+        <div className="flex items-center">
+            {Array(filledStars).fill().map((_, i) => <span key={i} className="text-yellow-400">&#9733;</span>)}
+            {halfStar === 1 && <span className="text-yellow-400">&#9734;</span>} 
+            {Array(emptyStars).fill().map((_, i) => <span key={i} className="text-gray-300">&#9733;</span>)}
+            <span className="ml-2 text-sm text-gray-600">({rating.toFixed(1)})</span>
+        </div>
+    );
+}
 
 function FoodList() {
     const { foods, user } = useOutletContext();
     const [showGlutenFree, setShowGlutenFree] = useState(false);
 
-    
     const toggleGlutenFree = () => {
         setShowGlutenFree(!showGlutenFree);
     };
@@ -24,6 +36,12 @@ function FoodList() {
                         <h2 className="text-xl font-bold">{food.name}</h2>
                         <p className="text-gray-600">{food.description}</p>
                         <p className="text-gray-800 font-semibold">${food.price}</p>
+                        <div className="text-gray-500">
+                            
+                            {food.average_rating !== null ? (
+                                <StarRating rating={food.average_rating} />
+                            ) : "No ratings"}
+                        </div>
                     </div>
                 </div>
             </div>
@@ -32,7 +50,6 @@ function FoodList() {
 
     return (
         <>  
-            
             <div className="flex justify-between items-center p-4">
                 {user ? <h1>{user.type === 'admin' ? "Here are all of the foods:" : "Here are the foods that you've reviewed:"}</h1> : null}
                 <label htmlFor="toggle" className="flex items-center cursor-pointer">

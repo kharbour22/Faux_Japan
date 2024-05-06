@@ -19,7 +19,18 @@ bcrypt = Bcrypt(app)
 class AllFoods(Resource):
 
     def get(self):
-        response_body = [food.to_dict(only = ('id','name','image','description', 'price', 'gluten_free' )) for food in Food.query.all()]
+        foods = Food.query.all()
+        response_body = []
+        for food in foods:
+            average_rating = None
+            if food.foodreviews:
+                total_ratings = sum(foodreview.rating for foodreview in food.foodreviews)
+                total_reviews = len(food.foodreviews)
+                average_rating = total_ratings / total_reviews if total_reviews > 0 else None
+                
+            food_dict = food.to_dict(only=('id', 'name', 'image', 'description', 'price', 'gluten_free'))
+            food_dict['average_rating'] = average_rating
+            response_body.append(food_dict)
         return make_response(response_body, 200)
     def post(self):
         try:
@@ -192,7 +203,7 @@ class UserByID(Resource):
 
         if user:
             response_body = user.to_dict(rules = ('-foodreviews.food', '-drinkreviews.drink', '-foodreviews.user', '-drinkreviews.user', '-password_hash'))
-              # Add in the association proxy data (The user's reviews) while removing duplicate food data for the user's foods   
+             
             response_body['foods'] = [food.to_dict(only =('id','name','image','description', 'price', 'gluten_free' )) for food in list(set(user.foods))]
             response_body['drinks'] = [drink.to_dict(only=('id', 'name', 'description', 'price')) for drink in list(set(user.drinks))]
 
