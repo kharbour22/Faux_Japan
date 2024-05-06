@@ -24,8 +24,17 @@ if __name__ == '__main__':
         food1 = Food(name = 'Hama Chili', description = 'Ponzu, Thai Chili, Orange Supreme', price = 22.50, gluten_free = True, image = '/assets/HamaChili.png', food_type = 'Cool' )
         food2 = Food(name = 'Walu Walu', description = 'Yuzu, Myoga, Escolar', price = 19.50, gluten_free = True, image = '/assets/Walu.png', food_type = 'Hot')
         food3 = Food(name = 'Kinoko Nabe', description = 'Seasonal Mushrooms, Egg yolk, Koshihikari Rice', price = 21, gluten_free = False, image = '/assets/Nabe.png', food_type = 'Hot')
+        food4 = Food(name = 'Fried Milk', description = 'Vanilla Custard, Salted Fudge, Sweet Cream', price = 12.5, gluten_free = False, image = '/assets/Fried_Milk.png ', food_type = 'Dessert')
+        food5 = Food(name = 'Hirame Usuzukuri', description = ' Flounder, Lime Zest, Candied Quinoa', price = 20, gluten_free = True, image = '/assets/Hirame.png ', food_type = 'Cool')
+        food6 = Food(name = 'Madai Crudo', description = 'Sea Bream, Pear, Shiro Zu', price = 27, gluten_free = False, image = '/assets/Madai_Crudo.png ', food_type = 'Daily Specials')
+        food7 = Food(name = 'Hot Rock', description = 'A5 Wagyu, Ponzu', price = 22 , gluten_free = True, image = '/assets/Hot_Rock.png ', food_type = 'Hot')
+        food8 = Food(name = 'Jasmine Cream', description = 'Cilantro Granita, Pineapple, Honey Crumble', price = 11, gluten_free = True, image = '/assets/Jasmine.png ', food_type = 'Dessert')
+        food9 = Food(name = 'Karaage', description = 'Chicken Thigh, Sweet Chili, Pickle', price = 15, gluten_free = True, image = '/assets/Kaarage.png ', food_type = 'Hot')
+        food10 = Food(name = 'Wagyu Tataki', description = 'Chimichurri, Brussels, Fried Egg Miso Foam', price = 33.5, gluten_free = False, image = '/assets/Wagyu.png ', food_type = 'Daily Specials')
+        food11 = Food(name = 'Akami Crudo', description = 'Bigeye Tuna, Blood Orange, Pumpkin Seed Granola', price = 46, gluten_free = True, image = 'assets/Akami.png', food_type = 'Daily Specials')
+        food12 = Food(name = 'Oyster', description = 'Beet Mignonette', price = 5.5, gluten_free = False , image = 'assets/Oyster.png', food_type = 'Daily Specials')
 
-        db.session.add_all([food1, food2, food3])
+        db.session.add_all([food1, food2, food3, food5, food6, food7, food4, food8, food9, food10, food11, food12])
         db.session.commit()
 
         password_1 = "kharbour"
