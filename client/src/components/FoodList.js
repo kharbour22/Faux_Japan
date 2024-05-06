@@ -42,7 +42,7 @@ function FoodList() {
                             
                             {food.average_rating !== null ? (
                                 <StarRating rating={food.average_rating} />
-                            ) : "No ratings"}
+                            ) : ""}
                         </div>
                     </div>
                 </div>
