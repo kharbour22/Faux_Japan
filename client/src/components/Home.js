@@ -4,12 +4,14 @@ const Home = () => {
     return (
         <div className="flex flex-col items-center justify-center min-h-screen bg-blue-50 relative">
             
-            <img src="/assets/Waves.png" alt="Background Waves" className="absolute inset-0 w-full h-90 object-cover z-0" />
+            <img src="/assets/Background.png" alt="Background Waves" className="absolute inset-0 w-full h-1/2 object-cover z-0" />
 
-            
+        
+
+        
             <div className="relative z-10">
                 <section>
-                    <img src="/assets/Logo2.png" alt="Sakanamono Home" className="h-90 w-90 rounded-lg" />
+                    <img src="/assets/Suhsi3.png" alt="Sakanamono Home" className="h-90 w-90 rounded-lg" />
                 </section>
                 
                 

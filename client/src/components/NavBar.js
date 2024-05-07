@@ -4,10 +4,13 @@ import { useOutletContext } from "react-router-dom";
 
 function NavBar({ user, logOutUser }) {
   return (
-    <nav className="navbar bg-gradient-to-r from-blue-900 to-black text-white flex justify-between items-center px-6 py-2">
+    <nav
+    className="navbar text-white flex justify-between items-center px-6 py-2"
+    style={{ backgroundImage: `url(/assets/Wood5.png)`, borderRadius: '0' }}  // Added borderRadius style here
+  >
       <div className="flex items-center space-x-4">
         <NavLink to="/">
-          <img src="/assets/nigiri.webp" alt="Sakanamono Home" className="h-12 hover:opacity-75 transition-opacity duration-300 rounded-lg" />
+          <img src="/assets/Battle.webp" alt="Sakanamono Home" className="h-12 hover:opacity-75 transition-opacity duration-300" />
         </NavLink>
         <NavLink className="font-bold text-lg hover:text-blue-300 transition-colors duration-300" to="/foods">Food</NavLink>
         <NavLink className="font-bold text-lg hover:text-blue-300 transition-colors duration-300" to="/drinks">Drink</NavLink>
