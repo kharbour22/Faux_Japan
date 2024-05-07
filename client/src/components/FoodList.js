@@ -7,14 +7,20 @@ function StarRating({ rating = 0 }) {
     const halfStar = safeRating % 1 >= 0.5 ? 1 : 0; 
     const emptyStars = 5 - filledStars - halfStar; 
 
-    return (
-        <div className="flex items-center">
-            {Array(filledStars).fill().map((_, i) => <span key={i} className="text-yellow-400">&#9733;</span>)}
-            {halfStar === 1 && <span className="text-yellow-400">&#9734;</span>} 
-            {Array(emptyStars).fill().map((_, i) => <span key={i} className="text-gray-300">&#9733;</span>)}
-            <span className="ml-2 text-sm text-gray-600">({safeRating.toFixed(1)})</span>
-        </div>
-    );
+    // Only render the stars and rating text if the rating is greater than 0
+    if (safeRating > 0) {
+        return (
+            <div className="flex items-center">
+                {Array(filledStars).fill().map((_, i) => <span key={i} className="text-yellow-400">&#9733;</span>)}
+                {halfStar === 1 && <span className="text-yellow-400">&#9734;</span>} 
+                {Array(emptyStars).fill().map((_, i) => <span key={i} className="text-gray-300">&#9733;</span>)}
+                <span className="ml-2 text-sm text-gray-600">({safeRating.toFixed(1)})</span>
+            </div>
+        );
+    } else {
+        // Return null or an alternative placeholder if no rating has been given yet
+        return null; // or any other placeholder you want to show when there's no rating
+    }
 }
 
 function FoodList() {
@@ -41,6 +47,7 @@ function FoodList() {
     const hotFoods = groupedFoods['Hot'] || [];
     const dessertFoods = groupedFoods['Dessert'] || [];
     const dailySpecials = groupedFoods['Daily Specials'] || [];
+    
 
     const foodsComponents = (foodsArr) => foodsArr.map(food => (
         <div key={food.id} className="p-4 mb-4 w-full"> 

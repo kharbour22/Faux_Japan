@@ -10,7 +10,6 @@ function FoodReviewList() {
         setFilter(event.target.value);
     };
 
-    
     const filteredReviews = foodReviews.filter(foodreview =>
         foodreview.food.name.toLowerCase().includes(filter.toLowerCase())
     );
@@ -20,23 +19,21 @@ function FoodReviewList() {
     ));
 
     return (
-    <div className="flex flex-col items-center justify-center mt-4">
-        <div className="w-full max-w-xs "> 
-            <input
-                type="text"
-                placeholder="Filter by food name..."
-                value={filter}
-                onChange={handleChange}
-                className="mb-4 p-2 w-full border border-black rounded"
-            />
+        <div className="flex flex-col items-center justify-center mt-4">
+            <div className="w-full max-w-xs" style={{ backgroundImage: `url(/assets/Scales.png)`, backgroundSize: 'cover', padding: '8px', borderRadius: '5px' }}> 
+                <input
+                    type="text"
+                    placeholder="Filter by food name..."
+                    value={filter}
+                    onChange={handleChange}
+                    className="mb-4 p-2 w-full border border-black rounded"
+                />
+            </div>
+            <ul className="flex flex-wrap justify-center w-full">
+                {foodreviewComponents}
+            </ul>
         </div>
-        <ul className="flex flex-wrap justify-center w-full">
-            {foodreviewComponents}
-        </ul>
-    </div>
-);
-
+    );
 }
-
 
 export default FoodReviewList;

@@ -8,7 +8,7 @@ function NewFoodForm() {
         description: "",
         price: "",
         gluten_free: false,
-        food_type: "" // New field for food type
+        food_type: "" 
     });
     const { addFood } = useOutletContext();
     const navigate = useNavigate();

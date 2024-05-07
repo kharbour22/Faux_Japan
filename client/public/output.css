@@ -38,6 +38,19 @@
   height: 100%;         /* Maintain the aspect ratio */
   object-fit: cover;    /* This will ensure the image covers the area without stretching */
 }
+.h2-style {
+  background-image: url('/assets/Nori.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  border: 0.5px solid #ccc; 
+  border-radius: 8px;
+  padding: 5px;
+  color: text-yellow-800;
+  width: 50%;
+}
+
+
+
 
 /*
 ! tailwindcss v3.4.3 | MIT License | https://tailwindcss.com

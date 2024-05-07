@@ -20,8 +20,9 @@ function SignupForm() {
     }
 
     return (
-        <div className="border border-gray-600 p-4 rounded-lg max-w-md mx-auto">
-            <h2 className="text-xl mb-4">Signup</h2>
+        <div className="flex flex-col items-center justify-center mt-4">
+            <div className="w-full max-w-xs" style={{ backgroundImage: `url(/assets/Scales.png)`, backgroundSize: 'cover', padding: '8px', borderRadius: '5px' }}> 
+            <h2 className="text-xl text-white font-semibold text-border mb-4">Signup</h2>
             <form onSubmit={handleSubmit}>
                 <input
                     onChange={updateFormData}
@@ -57,6 +58,7 @@ function SignupForm() {
                     Signup
                 </button>
             </form>
+        </div>
         </div>
     );
 }

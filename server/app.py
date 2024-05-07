@@ -6,7 +6,7 @@ import ipdb
 from flask import request, make_response, session, Flask
 from flask_restful import Resource
 from flask_bcrypt import Bcrypt
-
+from sqlalchemy.exc import SQLAlchemyError
 
 
 # Local imports
@@ -48,37 +48,44 @@ class AllFoods(Resource):
     
 api.add_resource(AllFoods, '/foods')
 
+
+
 class FoodbyID(Resource):
 
     def get(self, id):
-        food = db.session.get(Food,id)
-
+        food = db.session.get(Food, id)
         if food:
-            response_body = food.to_dict(rules = ('-foodreviews.food', '-foodreviews.user'))
-
+            response_body = food.to_dict(rules=('-foodreviews.food', '-foodreviews.user'))
             return make_response(response_body, 200)
-        
         else:
-            response_body = {
-                'error' : 'Food Not Found'
-            }
+            response_body = {'error': 'Food Not Found'}
             return make_response(response_body, 404)
 
     def patch(self, id):
         food = db.session.get(Food, id)
-
         if food:
             try:
+                # Updating food attributes from JSON request
                 for attr in request.json:
                     setattr(food, attr, request.json[attr])
 
                 db.session.commit()
-                response_body = food.to_dict(only = ('id','name', 'image', 'description', 'price', 'gluten_free', 'food_type'))
+
+                # Calculate the average rating
+                total_ratings = sum(review.rating for review in food.foodreviews)
+                total_reviews = len(food.foodreviews)
+                average_rating = total_ratings / total_reviews if total_reviews > 0 else None
+
+                # Build response including the average rating
+                response_body = food.to_dict(only=('id', 'name', 'image', 'description', 'price', 'gluten_free', 'food_type'))
+                response_body['average_rating'] = average_rating
+
                 return make_response(response_body, 200)
-                
-            except:
+
+            except SQLAlchemyError as e:
+                db.session.rollback()
                 response_body = {
-                    'error': 'Food must have a name, image, description, and price. Food cannot be the same as any other food and must be specified if gluten free.'
+                    'error': 'Update failed: ' + str(e)
                 }
                 return make_response(response_body, 400)
         else:
@@ -86,10 +93,9 @@ class FoodbyID(Resource):
                 'error': 'Food not found.'
             }
             return make_response(response_body, 404)
-    
-    def delete (self, id):
-        food = db.session.get(Food, id)
 
+    def delete(self, id):
+        food = db.session.get(Food, id)
         if food:
             db.session.delete(food)
             db.session.commit()
@@ -97,10 +103,10 @@ class FoodbyID(Resource):
             return make_response(response_body, 204)
         else:
             response_body = {
-                'error':'Food not found.'
+                'error': 'Food not found.'
             }
             return make_response(response_body, 404)
-        
+
 api.add_resource(FoodbyID, '/foods/<int:id>')
 
 class AllDrinks(Resource):
@@ -226,6 +232,7 @@ class UserByID(Resource):
                 db.session.commit()
                 response_body = user.to_dict(only=('id', 'email', 'username', 'type'))
                 return make_response(response_body, 200)
+                
             except:
                 response_body = {
                     "error": "User must have an email, username, and password. Email and username must be longer than five characters."
