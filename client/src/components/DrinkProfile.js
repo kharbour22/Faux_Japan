@@ -8,7 +8,8 @@ function DrinkProfile() {
         name: "",
         image: "",
         description: "",
-        price: ""
+        price: "",
+        drink_type: ""
     });
 
     const { id } = useParams();
@@ -25,7 +26,8 @@ function DrinkProfile() {
                             name: drinkData.name,
                             image: drinkData.image,
                             description: drinkData.description,
-                            price: drinkData.price
+                            price: drinkData.price,
+                            
                         });
                     });
                 } else {
@@ -70,42 +72,57 @@ function DrinkProfile() {
         } else {
             return (
                 <form onSubmit={handleSubmit} className="space-y-4">
-                    <input
+                <input
+                    onChange={updateFormData}
+                    type="text"
+                    name="name"
+                    placeholder="Drink Name"
+                    value={formData.name}
+                    className="block w-full border border-gray-400 rounded-md py-2 px-4"
+                />
+                <div className="flex items-center">
+                    <label className="mr-2">Drink Type:</label>
+                    <select
                         onChange={updateFormData}
-                        type="text"
-                        name="name"
-                        placeholder="Drink Name"
-                        value={formData.name}
-                        className="block w-full border border-gray-400 rounded-md py-2 px-4"
-                    />
-                    <input
-                        onChange={updateFormData}
-                        type="text"
-                        name="image"
-                        placeholder="Image"
-                        value={formData.image}
-                        className="block w-full border border-gray-400 rounded-md py-2 px-4"
-                    />
-                    <input
-                        onChange={updateFormData}
-                        type="text"
-                        name="description"
-                        placeholder="Description"
-                        value={formData.description}
-                        className="block w-full border border-gray-400 rounded-md py-2 px-4"
-                    />
-                    <input
-                        onChange={updateFormData}
-                        type="number"
-                        name="price"
-                        placeholder="Price"
-                        value={formData.price}
-                        className="block w-full border border-gray-400 rounded-md py-2 px-4"
-                    />
-                    <button type="submit" className="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 focus:outline-none">
-                        Save Changes
-                    </button>
-                </form>
+                        name="drink_type"
+                        value={formData.drink_type}
+                        className="border border-gray-400 rounded-md py-2 px-4"
+                    >
+                        <option value="">Select Drink Type</option>
+                        <option value="Cocktail">Cocktail</option>
+                        <option value="Sake">Sake</option>
+                        <option value="Beer">Beer</option>
+                    </select>
+                </div>
+                <input
+                    onChange={updateFormData}
+                    type="text"
+                    name="image"
+                    placeholder="Image URL"
+                    value={formData.image}
+                    className="block w-full border border-gray-400 rounded-md py-2 px-4"
+                />
+                <input
+                    onChange={updateFormData}
+                    type="text"
+                    name="description"
+                    placeholder="Description"
+                    value={formData.description}
+                    className="block w-full border border-gray-400 rounded-md py-2 px-4"
+                />
+                <input
+                    onChange={updateFormData}
+                    type="number"
+                    name="price"
+                    placeholder="Price"
+                    value={formData.price}
+                    className="block w-full border border-gray-400 rounded-md py-2 px-4"
+                />
+                <button type="submit" className="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 focus:outline-none">
+                    Save Changes
+                </button>
+            </form>
+            
             );
         }
     }

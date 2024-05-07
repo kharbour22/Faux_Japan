@@ -6,7 +6,8 @@ function NewDrinkForm() {
         name: "",
         image: "",
         description: "",
-        price: ""
+        price: "",
+        drink_type: ""
     });
 
     const { addDrink } = useOutletContext();
@@ -34,6 +35,7 @@ function NewDrinkForm() {
                     value={formData.name}
                     className="block w-full border border-gray-400 rounded-md py-2 px-4"
                 />
+                
                 <input
                     onChange={updateFormData}
                     type="text"
@@ -58,6 +60,22 @@ function NewDrinkForm() {
                     value={formData.price}
                     className="block w-full border border-gray-400 rounded-md py-2 px-4"
                 />
+                <div className="flex items-center">
+                    <label className="mr-2">Drink Type:</label>
+                    <select
+                        onChange={updateFormData}
+                        name="drink_type"
+                        value={formData.drink_type}
+                        className="border border-gray-400 rounded-md py-2 px-4"
+                    >
+                        <option value="">Select Drink Type</option>
+                        <option value="Cocktail">Cocktail</option>
+                        <option value="Sake">Sake</option>
+                        <option value = "Beer">Beer</option>
+                        
+
+                    </select>
+                </div>
                 <input
                     type="submit"
                     value="Add Drink"
