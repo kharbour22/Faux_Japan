@@ -47,19 +47,19 @@ function DrinkList() {
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 <div>
-                    <h2 className="text-2xl font-bold mt-6 mb-2 pb-2 text-center">Cocktails</h2>
+                    <h2 className="text-2xl font-bold mt-6 mb-2 pb-2 text-center  underline">Cocktails</h2>
                     <div className="flex flex-wrap">
                         {drinksComponents(cocktailDrinks)}
                     </div>
                 </div>
                 <div>
-                    <h2 className="text-2xl font-bold mt-6 mb-2 pb-2 text-center">Sake</h2>
+                    <h2 className="text-2xl font-bold mt-6 mb-2 pb-2 text-center  underline">Sake</h2>
                     <div className="flex flex-wrap">
                         {drinksComponents(sakeDrinks)}
                     </div>
                 </div>
                 <div>
-                    <h2 className="text-2xl font-bold mt-6 mb-2 pb-2 text-center">Beer</h2>
+                    <h2 className="text-2xl font-bold mt-6 mb-2 pb-2 text-center  underline ">Beer</h2>
                     <div className="flex flex-wrap">
                         {drinksComponents(beerDrinks)}
                     </div>

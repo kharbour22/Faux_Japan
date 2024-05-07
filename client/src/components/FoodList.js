@@ -7,7 +7,7 @@ function StarRating({ rating = 0 }) {
     const halfStar = safeRating % 1 >= 0.5 ? 1 : 0; 
     const emptyStars = 5 - filledStars - halfStar; 
 
-    // Only render the stars and rating text if the rating is greater than 0
+    
     if (safeRating > 0) {
         return (
             <div className="flex items-center">
@@ -18,8 +18,8 @@ function StarRating({ rating = 0 }) {
             </div>
         );
     } else {
-        // Return null or an alternative placeholder if no rating has been given yet
-        return null; // or any other placeholder you want to show when there's no rating
+        
+        return null; 
     }
 }
 
@@ -89,26 +89,26 @@ function FoodList() {
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 <div>
-                    <h2 className="text-2xl font-bold mt-6 mb-2  pb-2 text-center">Cool Dishes</h2>
+                    <h2 className="text-2xl font-bold mt-6 mb-2  pb-2 text-center underline">Cool Dishes</h2>
                     <div className="flex flex-wrap">
                         {foodsComponents(coolFoods)}
                     </div>
                 </div>
                 <div>
-                    <h2 className="text-2xl font-bold mt-6 mb-2  pb-2 text-center">Hot Dishes</h2>
+                    <h2 className="text-2xl font-bold mt-6 mb-2  pb-2 text-center underline">Hot Dishes</h2>
                     <div className="flex flex-wrap">
                         {foodsComponents(hotFoods)}
                     </div>
                 </div>
                 <div>
-                    <h2 className="text-2xl font-bold mt-6 mb-2  pb-2 text-center">Daily Specials</h2>
+                    <h2 className="text-2xl font-bold mt-6 mb-2  pb-2 text-center underline">Daily Specials</h2>
                     <div className="flex flex-wrap">
                         {foodsComponents(dailySpecials)}
                     </div>
                 </div>
             </div>
             <div>
-    <h2 className="text-2xl font-bold mt-6 mb-2 pb-2 text-center">Desserts</h2>
+    <h2 className="text-2xl font-bold mt-6 mb-2 pb-2 text-center underline">Desserts</h2>
     <div className="flex">
         {foodsComponents(dessertFoods)}
     </div>

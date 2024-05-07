@@ -12,23 +12,23 @@ function NavBar({ user, logOutUser }) {
         <NavLink to="/">
           <img src="/assets/Battle.webp" alt="Sakanamono Home" className="h-12 hover:opacity-75 transition-opacity duration-300" />
         </NavLink>
-        <NavLink className="font-bold text-lg hover:text-blue-300 transition-colors duration-300" to="/foods">Food</NavLink>
-        <NavLink className="font-bold text-lg hover:text-blue-300 transition-colors duration-300" to="/drinks">Drink</NavLink>
+        <NavLink className="font-bold text-border text-lg hover:text-blue-300 transition-colors duration-300" to="/foods">Food</NavLink>
+        <NavLink className="font-bold text-border text-lg hover:text-blue-300 transition-colors duration-300" to="/drinks">Drink</NavLink>
         {user && user.type === "admin" && (
-          <NavLink className="font-bold text-lg hover:text-blue-300 transition-colors duration-300" to="/add_food">Add Food</NavLink>
+          <NavLink className="font-bold text-border text-lg hover:text-blue-300 transition-colors duration-300" to="/add_food">Add Food</NavLink>
         )}
         {user && user.type === "admin" && (
-          <NavLink className="font-bold text-lg hover:text-blue-300 transition-colors duration-300" to="/foodsadmin">FoodsAdmin</NavLink>
+          <NavLink className="font-bold text-border text-lg hover:text-blue-300 transition-colors duration-300" to="/foodsadmin">FoodsAdmin</NavLink>
         )}
         {user && user.type === "admin" && (
-          <NavLink className="font-bold text-lg hover:text-blue-300 transition-colors duration-300" to="/add_drink">Add Drink</NavLink>
+          <NavLink className="font-bold text-border text-lg hover:text-blue-300 transition-colors duration-300" to="/add_drink">Add Drink</NavLink>
         )}
         {user && user.type === "admin" && (
-          <NavLink className="font-bold text-lg hover:text-blue-300 transition-colors duration-300" to="/drinksadmin">DrinksAdmin</NavLink>
+          <NavLink className="font-bold text-border text-lg hover:text-blue-300 transition-colors duration-300" to="/drinksadmin">DrinksAdmin</NavLink>
         )}
-        <NavLink className="font-bold text-lg hover:text-blue-300 transition-colors duration-300" to="/reviews">Reviews</NavLink>
+        <NavLink className="font-bold text-border text-lg hover:text-blue-300 transition-colors duration-300" to="/reviews">Reviews</NavLink>
         {user && user.type === "user" && (
-          <NavLink className="font-bold text-lg hover:text-blue-300 transition-colors duration-300" to="/add_review">Add Review</NavLink>
+          <NavLink className="font-bold text-border text-lg hover:text-blue-300 transition-colors duration-300" to="/add_review">Add Review</NavLink>
         )}
       </div>
 

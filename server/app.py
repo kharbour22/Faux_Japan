@@ -65,18 +65,18 @@ class FoodbyID(Resource):
         food = db.session.get(Food, id)
         if food:
             try:
-                # Updating food attributes from JSON request
+               
                 for attr in request.json:
                     setattr(food, attr, request.json[attr])
 
                 db.session.commit()
 
-                # Calculate the average rating
+                
                 total_ratings = sum(review.rating for review in food.foodreviews)
                 total_reviews = len(food.foodreviews)
                 average_rating = total_ratings / total_reviews if total_reviews > 0 else None
 
-                # Build response including the average rating
+                
                 response_body = food.to_dict(only=('id', 'name', 'image', 'description', 'price', 'gluten_free', 'food_type'))
                 response_body['average_rating'] = average_rating
 
