@@ -57,10 +57,20 @@ if __name__ == '__main__':
 
         db.session.commit()
 
-        drink1 = Drink(name = 'High Noon Old Fashioned', description = 'High West Bourbon, Barley Bitters, Lemon', price = 16.00, image = '/assets/Highnoon.png')
-        drink2 = Drink(name = 'Fiery Yu', description = 'Yuzu Honey, Thai Chili, Lemon', price = 14.00, image = '/assets/Fiery.png')
+        drink1 = Drink(name = 'High Noon Old Fashioned', description = 'High West Bourbon, Barley Bitters, Lemon', price = 16.00, image = '/assets/Highnoon.png', drink_type = 'Cocktail')
+        drink2 = Drink(name = 'Fiery Yu', description = 'Yuzu Honey, Thai Chili, Lemon', price = 14.00, image = '/assets/Fiery.png', drink_type = 'Cocktail')
+        drink3 = Drink(name = 'Karai Tuna', description = 'Habenero Mezcal, Prickly Pear', price = 16, image = '/assets/Karai.png', drink_type = 'Cocktail' )
+        drink4 = Drink(name = 'Gin and Tonic', description = 'Roku Gin, Yuzu Cordial, Lime', price = 14, image = '/assets/GandT.png', drink_type = 'Cocktail' )
+        drink5 = Drink(name = 'Tsurai', description = 'Arette Blanco, Passion Fruit, Aperol', price = 18, image = '/assets/Tsurai.png', drink_type = 'Cocktail' )
+        drink6 = Drink(name = 'Otokoyama', description = 'Clean, Crisp, Dry', price = 80, image = '/assets/Sake1.png', drink_type = 'Sake' )
+        drink7 = Drink(name = 'Sho Chiku Bai Nigori', description = 'Velvety, Elegant, Coconut', price = 24, image = '/assets/Sake2.png', drink_type = 'Sake' )
+        drink8 = Drink(name = 'Wakatake', description = 'Smooth, Black Pepper, Spearmint', price = 140 , image = '/assets/sake3.png', drink_type = 'Sake' )
+        drink9 = Drink(name = 'Kirinzan', description = 'Robust, Almond, Melon', price = 130, image = '/assets/Sake4.png', drink_type = 'Sake' )
+        drink10 = Drink(name = 'Hitachino', description = 'Seasonal', price = 12, image = '/assets/Beer1.png', drink_type = 'Beer' )
+        drink11 = Drink(name = 'Sapporo', description = 'Lager', price = 7, image = '/assets/Beer2.png', drink_type = 'Beer' )
+        drink12 = Drink(name = 'Asahi', description = 'Super Dry', price = 8, image = '/assets/Beer3.png', drink_type = 'Beer' )
 
-        db.session.add_all([drink1, drink2])
+        db.session.add_all([drink1, drink2, drink3, drink4, drink5, drink6, drink7, drink8, drink9, drink10, drink11, drink12])
 
         db.session.commit()
 

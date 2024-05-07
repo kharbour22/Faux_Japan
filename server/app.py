@@ -106,14 +106,14 @@ api.add_resource(FoodbyID, '/foods/<int:id>')
 class AllDrinks(Resource):
 
     def get(self):
-        response_body = [drink.to_dict(only = ('id', 'name', 'description', 'price','image'))for drink in Drink.query.all()]
+        response_body = [drink.to_dict(only = ('id', 'name', 'description', 'price','image', 'drink_type'))for drink in Drink.query.all()]
         return make_response(response_body, 200)
     def post (self):
         try:
-            new_drink = Drink(name = request.json.get('name'), image = request.json.get('image'), description = request.json.get('description'), price = request.json.get('price'))
+            new_drink = Drink(name = request.json.get('name'), image = request.json.get('image'), description = request.json.get('description'), price = request.json.get('price'), drink_type = request.json.get('drink_type'))
             db.session.add(new_drink)
             db.session.commit()
-            response_body = new_drink.to_dict(only = ('id', 'name', 'description', 'price', 'image'))
+            response_body = new_drink.to_dict(only = ('id', 'name', 'description', 'price', 'image', 'drink_type'))
             return make_response(response_body,201)
         except:
             response_body = {
@@ -129,7 +129,7 @@ class DrinkbyID(Resource):
         drink = db.session.get(Drink, id)
 
         if drink:
-            response_body = drink.to_dict(only = ('id', 'name', 'description', 'price','image'))
+            response_body = drink.to_dict(only = ('id', 'name', 'description', 'price','image', 'drink_type'))
 
             return make_response(response_body, 200)
         else:
@@ -146,7 +146,7 @@ class DrinkbyID(Resource):
                 for attr in request.json:
                     setattr(drink, attr, request.json[attr])
                 db.session.commit()
-                response_body = drink.to_dict(only = ('id', 'name', 'description', 'price', 'image'))
+                response_body = drink.to_dict(only = ('id', 'name', 'description', 'price', 'image', 'drink_type'))
                 return make_response(response_body, 200)
             except: 
                 response_body = {
@@ -343,19 +343,30 @@ class AllFoodReviews(Resource):
         foodreviews = FoodReview.query.all()
         foodreview_list_with_dictionaries = [foodreview.to_dict(only=('id','rating','text', 'food.name','user_id', 'food.image' ))for foodreview in foodreviews]
         return make_response(foodreview_list_with_dictionaries, 200)
+
     def post(self):
         try:
-            # ipdb.set_trace()
-            new_foodreview = FoodReview(rating = request.json.get('rating'), text = request.json.get('text'), food_id = request.json.get('food_id'), user_id=request.json.get('user_id') )
+            new_foodreview = FoodReview(rating=request.json.get('rating'), text=request.json.get('text'), food_id=request.json.get('food_id'), user_id=request.json.get('user_id'))
             db.session.add(new_foodreview)
             db.session.commit()
+
+            # Calculate the new average rating for the food
+            food = Food.query.get(new_foodreview.food_id)
+            total_ratings = sum(foodreview.rating for foodreview in food.foodreviews)
+            total_reviews = len(food.foodreviews)
+            average_rating = total_ratings / total_reviews if total_reviews > 0 else None
+
             response_body = new_foodreview.to_dict(only=('id','rating','text', 'food_id', 'user_id','food.name','food.image'))
+            response_body['average_rating'] = average_rating
+
             return make_response(response_body, 201)
+
         except: 
             response_body = {
                 'error': 'Review must have a rating, text, and food_id.'
             }
             return make_response(response_body, 400)
+
             
     
 api.add_resource(AllFoodReviews, '/foodreviews')

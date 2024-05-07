@@ -1,47 +1,69 @@
-import React from "react";
+import React, { useState } from "react";
 import { useOutletContext } from "react-router-dom";
-import Drink from "./Drink";
 
 function DrinkList() {
     const { drinks, user } = useOutletContext();
+    
 
-    const drinksComponent = drinks.map(drink => (
-        <div key={drink.id} className="p-4 mb-4">
-            
-                <div className="shadow-md rounded-md overflow-hidden">
-                    <div className="flex items-center">
-                        <div className="mr-4">
-                            <img src={drink.image} alt={drink.name} className="rounded-md w-40 h-40 object-cover" />
-                        </div>
-                        <div>
-                            <h2 className="text-xl font-bold">{drink.name}</h2>
-                            <p className="text-gray-600">{drink.description}</p>
-                            <p className="text-gray-800 font-semibold">${drink.price}</p>
-                        </div>
+    
+    
+
+    const groupedDrinks = drinks.reduce((acc, drink) => {
+        if (!acc[drink.drink_type]) {
+            acc[drink.drink_type] = [];
+        }
+        acc[drink.drink_type].push(drink);
+        return acc;
+    }, {});
+
+    const cocktailDrinks = groupedDrinks['Cocktail'] || [];
+    const sakeDrinks = groupedDrinks['Sake'] || [];
+    const beerDrinks = groupedDrinks['Beer'] || [];
+    
+
+    const drinksComponents = (drinksArr) => drinksArr.map(drink => (
+        <div key={drink.id} className="p-4 mb-4 w-full">
+            <div className="shadow-md rounded-md overflow-hidden w-full">
+                <div className="flex items-center w-full">
+                    <div className="mr-4">
+                        <img src={drink.image} alt={drink.name} className="rounded-md w-40 h-40 object-cover" />
+                    </div>
+                    <div>
+                        <h3 className="text-xl font-bold">{drink.name}</h3>
+                        <p className="text-gray-600">{drink.description}</p>
+                        <p className="text-gray-800 font-semibold">${drink.price}</p>
                     </div>
                 </div>
-            
+            </div>
         </div>
     ));
 
-    function displayDrinkInfo() {
-        if (user && user.type === 'admin') {
-            return <h1>Here are all of the drinks:</h1>;
-        } else if (user && user.type === 'user' && drinks.length > 0) {
-            return <h1>Here are the drinks that you've reviewed:</h1>;
-        } else if (user && user.type === 'user' && drinks.length === 0) {
-            return <h1>You haven't reviewed any drinks yet.</h1>;
-        } else {
-            return null;
-        }
-    }
-
     return (
         <>
-            <br />
-            {user ? displayDrinkInfo() : null}
+            <div className="flex justify-between items-center p-4">
+                
+                    
+                
+            </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                {drinksComponent}
+                <div>
+                    <h2 className="text-2xl font-bold mt-6 mb-2 pb-2 text-center">Cocktails</h2>
+                    <div className="flex flex-wrap">
+                        {drinksComponents(cocktailDrinks)}
+                    </div>
+                </div>
+                <div>
+                    <h2 className="text-2xl font-bold mt-6 mb-2 pb-2 text-center">Sake</h2>
+                    <div className="flex flex-wrap">
+                        {drinksComponents(sakeDrinks)}
+                    </div>
+                </div>
+                <div>
+                    <h2 className="text-2xl font-bold mt-6 mb-2 pb-2 text-center">Beer</h2>
+                    <div className="flex flex-wrap">
+                        {drinksComponents(beerDrinks)}
+                    </div>
+                </div>
             </div>
         </>
     );

@@ -32,6 +32,13 @@
        1px  1px 0 #000; /* Simulated border effect */
 }
 
+.rounded-image {
+  border-radius: 10px;  /* Adjust the radius as needed */
+  width: 100%;          /* Make sure the image fills the container */
+  height: 100%;         /* Maintain the aspect ratio */
+  object-fit: cover;    /* This will ensure the image covers the area without stretching */
+}
+
 /*
 ! tailwindcss v3.4.3 | MIT License | https://tailwindcss.com
 */

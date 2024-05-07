@@ -40,6 +40,7 @@ class Drink(db.Model, SerializerMixin):
     image = db.Column(db.String, nullable = False)
     description = db.Column(db.String, nullable = False)
     price = db.Column(db.Float, nullable = False)
+    drink_type = db.Column(db.String, nullable = False)
 
     drinkreviews = db.relationship('DrinkReview', back_populates = 'drink', cascade = 'all')
     users = association_proxy('drinkreviews', 'user', creator = lambda u: DrinkReview(user = u))
