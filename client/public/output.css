@@ -16,6 +16,21 @@
   padding: 10px;
 }
 
+.bg-custom {
+  background-image: url('/assets/Scales.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.text-border {
+  color: white;
+  text-shadow: 
+      -1px -1px 0 #000,  
+       1px -1px 0 #000,
+      -1px  1px 0 #000,
+       1px  1px 0 #000; /* Simulated border effect */
+}
 
 /*
 ! tailwindcss v3.4.3 | MIT License | https://tailwindcss.com

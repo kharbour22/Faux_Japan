@@ -11,17 +11,20 @@ const Home = () => {
         
             <div className="relative z-10">
                 <section>
-                    <img src="/assets/Suhsi3.png" alt="Sakanamono Home" className="h-90 w-90 rounded-lg" />
+                    <img src="/assets/Suhsi4.png" alt="Sakanamono Home" className="h-90 w-90 rounded-lg" />
                 </section>
                 
                 
-                
-                <section className="mt-8 max-w-4xl mx-auto bg-blue-100 p-6 rounded-lg shadow h-auto md:h-50 w-full md:w-3/4 text-center">
-                    <h2 className="text-2xl font-semibold mb-2">Hours of Operation</h2>
-                    <p>Tuesday - Saturday : 4:00pm to 10:00pm</p>
-                    <p className="text-1xl font-semibold mb-1">Happy Hour</p>
-                    <p>4:00pm to 6:00pm</p>
+                <section className="mt-8 max-w-4xl mx-auto bg-blue-100 p-6 rounded-lg shadow h-auto md:h-50 w-full md:w-3/4 text-center bg-custom">
+                    <h2 className="text-4xl font-semibold mb-2 text-white text-border">Hours of Operation</h2>
+    <p className="text-2xl font-semibold text-white text-border">Tuesday - Saturday : 4:00pm to 10:00pm</p>
+    <p className="text-2xl font-semibold mb-1 text-white text-border">Happy Hour</p>
+    <p className="text-2xl font-semibold text-white text-border">4:00pm to 6:00pm</p>
                 </section>
+
+
+
+
 
 
                 
@@ -42,9 +45,9 @@ const Home = () => {
                    </section>
 
                 
-                <section className="mt-8 max-w-4xl bg-blue-100 p-6 rounded-lg shadow h-auto md:h-50 w-full md:w-3/4 mx-auto">
-                <h2 className="text-2xl font-semibold mb-2">About Us</h2>
-                <p>Welcome to Sakanamono.
+                <section className="mt-8  max-w-4xl bg-custom p-6 rounded-lg shadow h-auto md:h-50 w-full md:w-3/4 mx-auto">
+                <h2 className="text-2xl text-white text-border font-semibold mb-2">About Us</h2>
+                <p className="  text-white text-border font-semibold">Welcome to Sakanamono.
                 Our chefs are like culinary ninjas, wielding their knives with the precision of a master sushi sensei and the creativity of a manga artist. Each dish they craft is a work of edible art, a fusion of tradition and innovation that’ll make your taste buds do a happy dance.
                     </p>
                 </section>
