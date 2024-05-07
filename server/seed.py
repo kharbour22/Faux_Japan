@@ -58,9 +58,9 @@ if __name__ == '__main__':
         db.session.commit()
 
         drink1 = Drink(name = 'High Noon Old Fashioned', description = 'High West Bourbon, Barley Bitters, Lemon', price = 16.00, image = '/assets/Highnoon.png', drink_type = 'Cocktail')
-        drink2 = Drink(name = 'Fiery Yu', description = 'Yuzu Honey, Thai Chili, Lemon', price = 14.00, image = '/assets/Fiery.png', drink_type = 'Cocktail')
-        drink3 = Drink(name = 'Karai Tuna', description = 'Habenero Mezcal, Prickly Pear', price = 16, image = '/assets/Karai.png', drink_type = 'Cocktail' )
-        drink4 = Drink(name = 'Gin and Tonic', description = 'Roku Gin, Yuzu Cordial, Lime', price = 14, image = '/assets/GandT.png', drink_type = 'Cocktail' )
+        drink2 = Drink(name = 'Fiery Yu', description = 'Breckenridge Vodka, Yuzu Honey, Thai Chili', price = 14.00, image = '/assets/Fiery.png', drink_type = 'Cocktail')
+        drink3 = Drink(name = 'Karai Tuna', description = 'Habenero Mezcal, Prickly Pear, Lime', price = 16, image = '/assets/Karai.png', drink_type = 'Cocktail' )
+        drink4 = Drink(name = 'Gin and Tonic', description = 'Ki No Bi Gin, Yuzu Cordial, Lemon', price = 22, image = '/assets/GandT.png', drink_type = 'Cocktail' )
         drink5 = Drink(name = 'Tsurai', description = 'Arette Blanco, Passion Fruit, Aperol', price = 18, image = '/assets/Tsurai.png', drink_type = 'Cocktail' )
         drink6 = Drink(name = 'Otokoyama', description = 'Clean, Crisp, Dry', price = 80, image = '/assets/Sake1.png', drink_type = 'Sake' )
         drink7 = Drink(name = 'Sho Chiku Bai', description = 'Unfiltered, Elegant, Coconut', price = 24, image = '/assets/Sake2.png', drink_type = 'Sake' )

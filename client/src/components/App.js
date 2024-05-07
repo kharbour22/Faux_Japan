@@ -127,15 +127,27 @@ function App() {
     })
     .then(response => {
         if (response.ok){
-            response.json().then (newFoodReviewData => setFoodreviews([...foodReviews, newFoodReviewData]))
+            response.json().then(newFoodReviewData => {
+                setFoodreviews([...foodReviews, newFoodReviewData]);  
+                updateFoodWithNewRating(newFoodReviewData.food_id, newFoodReviewData.average_rating);  
+            })
         }
         else{
-            alert('Error: You must select a Food and Rating ')
+            alert('Error: You must select a Food and Rating')
         }
-       
     })
-    
-  }
+}
+
+function updateFoodWithNewRating(foodId, newAverageRating) {
+    setFoods(foods => foods.map(food => {
+        if (food.id === foodId) {
+            return {...food, average_rating: newAverageRating};  
+        } else {
+            return food;
+        }
+    }));
+}
+
 
 
   function addFood(newFoodData){
