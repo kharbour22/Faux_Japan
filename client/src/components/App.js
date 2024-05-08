@@ -176,6 +176,23 @@ function updateFoodWithNewRating(foodId, newAverageRating) {
     .then(newDrinkData => setDrinks([...drinks, newDrinkData]))
   }
 
+  function deleteFoodReview(id){
+
+  fetch(`/foodreviews/${id}`, {
+      method: "DELETE"
+  })
+  .then(response => {
+    if(response.ok){
+        setFoodreviews(foodReviews => foodReviews.filter(foodreview =>{
+            return foodreview.id !== id
+        }))
+        navigate('/reviews')
+    }
+    else if(response.status === 404){
+        response.json().then(errorData => alert(`Error: ${errorData.error}`))
+    }
+  })
+}
   function deleteDrink(id){
     
     fetch(`/drinks/${id}`, {
@@ -291,7 +308,7 @@ function updateFoodWithNewRating(foodId, newAverageRating) {
   return (
     <div>
       <NavBar user = {user} logOutUser = {logOutUser}/>
-      <Outlet context={{foods: foods, drinks: drinks, updateFood: updateFood, updateDrink: updateDrink, deleteFood: deleteFood, deleteDrink: deleteDrink, addFood: addFood, addDrink:addDrink, addFoodReview: addFoodReview, foodReviews: foodReviews, logInUser: logInUser, signUpUser: signUpUser, user: user }}/>
+      <Outlet context={{foods: foods, drinks: drinks, updateFood: updateFood, updateDrink: updateDrink, deleteFood: deleteFood, deleteDrink: deleteDrink, addFood: addFood, addDrink:addDrink, addFoodReview: addFoodReview, foodReviews: foodReviews, logInUser: logInUser, signUpUser: signUpUser, user: user, deleteFoodReview: deleteFoodReview }}/>
     </div>
   )
 }
