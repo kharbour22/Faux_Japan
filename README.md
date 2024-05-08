@@ -39,6 +39,8 @@ Sakanamono is a application designed to provide users with the ability to leave 
 
   pipenv install
 
+  pip install flask-bcrypt
+
   pipenv shell
 
   ```
@@ -48,6 +50,8 @@ Sakanamono is a application designed to provide users with the ability to leave 
   ```bash
 
   cd server
+
+  flask db upgrade
 
   python seed.py
 

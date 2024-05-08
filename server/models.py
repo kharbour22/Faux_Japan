@@ -3,6 +3,7 @@ from sqlalchemy.ext.associationproxy import association_proxy
 from sqlalchemy.orm import validates
 
 from config import db
+import re
 
 # Models go here!
 class Food(db.Model, SerializerMixin):
@@ -130,11 +131,15 @@ class User(db.Model, SerializerMixin):
     drinks = association_proxy('drinkreviews', 'drink', creator = lambda d: DrinkReview(drink = d))
 
 
-    @validates('username', 'email', 'password_hash')
+    @validates('username', 'password_hash')
     def validate_length(self, attr, value):
         if len(value) < 5:
             raise ValueError(f"{attr} must be at least 5 characters long.")
         return value
 
-
+    @validates('email')
+    def validate_email(self, key, address):
+        if not re.match(r"[^@]+@[^@]+\.[^@]+", address):
+            raise ValueError(f"Invalid email address: {address}")
+        return address
 

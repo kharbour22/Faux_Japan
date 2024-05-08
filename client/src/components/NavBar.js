@@ -33,14 +33,22 @@ function NavBar({ user, logOutUser }) {
       </div>
 
       <div className="flex justify-end items-center space-x-4">
-        {!user && <NavLink className="font-bold text-lg hover:text-blue-300 transition-colors duration-300" to="/login">Login</NavLink>}
-        {user && (
-          <button onClick={logOutUser} className="text-white hover:text-blue-300 transition-colors duration-300">
-            Log Out
-          </button>
-        )}
-        {!user && <NavLink className="font-bold text-lg hover:text-blue-300 transition-colors duration-300" to="/signup">Signup</NavLink>}
-      </div>
+  {!user && (
+    <>
+      <NavLink className="font-bold text-lg hover:text-blue-300 transition-colors duration-300" to="/login">Login</NavLink>
+      <NavLink className="font-bold text-lg hover:text-blue-300 transition-colors duration-300" to="/signup">Signup</NavLink>
+    </>
+  )}
+  {user && (
+    <>
+      <span className="font-bold text-lg">Welcome, {user.username}</span>
+      <button onClick={logOutUser} className="text-white hover:text-blue-300 transition-colors duration-300">
+        Log Out
+      </button>
+    </>
+  )}
+</div>
+
     </nav>
   );
 }

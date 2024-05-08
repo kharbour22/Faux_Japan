@@ -196,7 +196,7 @@ class AllUsers(Resource):
             return make_response(response_body, 201)
         except:
             response_body = {
-                'error':'User must have an email, username, and password. Email and username must be longer than five characters.'
+                'error':'User must have an email, username, and password. Username and Password must be longer than five characters and the email must be in the proper format.'
             }
             return make_response(response_body, 400)
     
@@ -338,7 +338,7 @@ class Signup(Resource):
             return make_response(response_body, 201)
         except:
             response_body = {
-                'error':'User must have an email, username, and password. Email and username must be longer than five characters.'
+                'error':'User must have an email, username, and password. Username must be longer than five characters and you must have an email.'
             }
             return make_response(response_body, 400)
 

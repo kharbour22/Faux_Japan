@@ -27,9 +27,9 @@ function DrinkList() {
 
     function displayDrinkInfo() {
         if (user && user.type === 'admin') {
-            return <h1>Here are all of the drinks:</h1>;
+            return <h1></h1>;
         } else if (user && user.type === 'user' && drinks.length > 0) {
-            return <h1>Here are the drinks that you've reviewed:</h1>;
+            return <h1></h1>;
         } else if (user && user.type === 'user' && drinks.length === 0) {
             return <h1>You haven't reviewed any drinks yet.</h1>;
         } else {

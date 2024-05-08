@@ -53,8 +53,8 @@ function App() {
     .then(drinkreviewsData => setDrinkreviews(drinkreviewsData))
   }, [])
 
-  function signUpUser(signupData){
-    fetch('/signup', {
+  function signUpUser(signupData) {
+    return fetch('/signup', {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -63,17 +63,23 @@ function App() {
         body: JSON.stringify(signupData)
     })
     .then(response => {
-        if(response.ok){
-            response.json().then(userData => {
-                setUser(userData)
-                navigate('/')
-            })
-        }
-        else if(response.status === 400){
-            response.json().then(errorData => alert(`Error: ${errorData.error}`))
-        }
+        return response.json().then(data => {
+            if(response.ok) {
+                setUser(data);
+                navigate('/');
+                return data;
+            } else {
+                // Assuming the server responds with an error message in JSON format
+                throw new Error(`Error: ${data.error}`);
+            }
+        });
     })
+    .catch(error => {
+        // This catches any network errors and errors thrown from the response handling
+        alert(error.message);
+    });
 }
+
 
   
   function logInUser(loginData){

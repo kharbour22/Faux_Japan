@@ -27,9 +27,9 @@ function FoodListAdmin() {
 
     function displayFoodInfo() {
         if (user && user.type === 'admin') {
-            return <h1>Here are all of the foods:</h1>;
+            return <h1></h1>;
         } else if (user && user.type === 'user' && foods.length > 0) {
-            return <h1>Here are the foods that you've reviewed:</h1>;
+            return <h1></h1>;
         } else if (user && user.type === 'user' && foods.length === 0) {
             return <h1>You haven't reviewed any foods yet.</h1>;
         } else {
