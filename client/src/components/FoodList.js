@@ -75,7 +75,7 @@ function FoodList() {
     return (
         <>  
             <div className="flex justify-between items-center p-4">
-                {user ? <h1>{user.type === 'admin' ? "Here are all of the foods:" : "Here are the foods that you've reviewed:"}</h1> : null}
+               
                 <label htmlFor="toggle" className="flex items-center cursor-pointer">
                     <div className="relative">
                         <input id="toggle" type="checkbox" className="sr-only" onChange={toggleGlutenFree} checked={showGlutenFree} />
