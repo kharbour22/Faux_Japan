@@ -295,8 +295,8 @@ class CheckSession(Resource):
             response_body = user.to_dict(rules=('-foodreviews.food','-drinkreviews.drink', '-foodreviews.user','-drinkreviews.user', '-password_hash'))
 
           
-            response_body['foods'] = [food.to_dict(only =('id','name','image','description', 'price', 'gluten_free' )) for food in list(set(user.foods))]
-            response_body['drinks'] = [drink.to_dict(only = ('id', 'name','image', 'description', 'price')) for drink in list(set(user.drinks)) ]
+            response_body['foods'] = [food.to_dict(only =('id','name','image','description', 'price', 'gluten_free', 'food_type' )) for food in list(set(user.foods))]
+            response_body['drinks'] = [drink.to_dict(only = ('id', 'name','image', 'description', 'price', 'drink_type')) for drink in list(set(user.drinks)) ]
 
             return make_response(response_body, 200)
         else:
@@ -327,12 +327,13 @@ class Signup(Resource):
             new_user = User(email = request.json.get('email'), username = request.json.get('username'), password_hash = pw_hash, type = 'user') 
             db.session.add(new_user)
             db.session.commit()
+           
             session['user_id'] = new_user.id
 
             response_body = new_user.to_dict(rules = ('-foodreviews.food','-drinkreviews.drink', '-foodreviews.user', '-drinkreviews.user', '-password_hash'))
 
-            response_body['foods'] = [food.to_dict(only =('id','name','image','description', 'price', 'gluten_free' )) for food in list(set(new_user.foods))]
-            response_body['drinks'] = [drink.to_dict(only = ('id', 'name','image', 'descrpition', 'price')) for drink in list(set(new_user.drinks)) ]
+            response_body['foods'] = [food.to_dict(only =('id','name','image','description', 'price', 'gluten_free', 'food_type' )) for food in list(set(new_user.foods))]
+            # response_body['drinks'] = [drink.to_dict(only = ('id', 'name','image', 'descrpition', 'price', 'drink_type')) for drink in list(set(new_user.drinks)) ]
 
             return make_response(response_body, 201)
         except:
@@ -357,7 +358,7 @@ class AllFoodReviews(Resource):
             db.session.add(new_foodreview)
             db.session.commit()
 
-            # Calculate the new average rating for the food
+            
             food = Food.query.get(new_foodreview.food_id)
             total_ratings = sum(foodreview.rating for foodreview in food.foodreviews)
             total_reviews = len(food.foodreviews)

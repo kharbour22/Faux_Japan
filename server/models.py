@@ -130,11 +130,11 @@ class User(db.Model, SerializerMixin):
     drinks = association_proxy('drinkreviews', 'drink', creator = lambda d: DrinkReview(drink = d))
 
 
-    # @validates('username', 'email', 'password_hash')
-    # def validate_length(self, attr, value):
-    #     if len(value) < 5:
-    #         raise ValueError(f"{attr} must be at least 5 characters long.")
-    #     return value
+    @validates('username', 'email', 'password_hash')
+    def validate_length(self, attr, value):
+        if len(value) < 5:
+            raise ValueError(f"{attr} must be at least 5 characters long.")
+        return value
 
 
 
