@@ -338,7 +338,7 @@ class Signup(Resource):
             return make_response(response_body, 201)
         except:
             response_body = {
-                'error':'User must have an email, username, and password. Username must be longer than five characters and you must have an email.'
+                'error':'User must have an email, username, and password. Username must be longer than five characters and have a valid email.'
             }
             return make_response(response_body, 400)
 
