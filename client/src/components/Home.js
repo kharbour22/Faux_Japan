@@ -30,19 +30,19 @@ const Home = () => {
                 
                 
                 <section className="mt-7 max-w-4xl grid grid-cols-2 gap-2">
-    <div className="bg-gray-300 h-70 rounded-lg">
-        <img src="assets/Dishes2.png" alt="Sunset" className="rounded-image" />
-    </div>
-    <div className="bg-gray-300 h-32 w-90 rounded-lg">
-        <img src="assets/Dishes.png" alt="Image 2" className="rounded-image" />
-    </div>
-    <div className="bg-gray-300 h-32 w-0 rounded-lg">
-        <img src="assets/Dishes2.png" alt="Image 3" className="rounded-image" />
-    </div>
-    <div className="bg-blue-50 h-60 w-60 rounded-lg">
-        <img src="assets/Cheers.png" alt="Image 4" className="rounded-image" />
-    </div>
-</section>
+                    <div className="bg-gray-300 h-70 rounded-lg">
+                        <img src="assets/Dishes2.png" alt="Sunset" className="rounded-image" />
+                     </div>
+                    <div className="bg-gray-300 h-32 w-90 rounded-lg">
+                         <img src="assets/Dishes.png" alt="Image 2" className="rounded-image" />
+                    </div>
+                    <div className="bg-gray-300 h-32 w-0 rounded-lg">
+                        <img src="assets/Dishes2.png" alt="Image 3" className="rounded-image" />
+                    </div>
+                    <div className="bg-blue-50 h-60 w-60 rounded-lg">
+                        <img src="assets/Cheers.png" alt="Image 4" className="rounded-image" />
+                    </div>
+                </section>
 
 
                 
