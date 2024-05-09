@@ -49,10 +49,10 @@ function NewFoodReviewForm(){
     }
 
     return (
-        <div style={{ backgroundImage: `url(/assets/Scales.png)`, backgroundSize: 'cover', marginTop: '50px' }} className="border border-gray-600 p-4 rounded-lg max-w-md mx-auto">
+        <div style={{ backgroundImage: `url(/assets/Nori.png)`, backgroundSize: 'cover', marginTop: '50px' }} className="border border-gray-600 p-4 rounded-lg max-w-md mx-auto">
             {foods.length > 0 ? 
                 <form onSubmit={handleSubmit} className="space-y-4">
-                    <h2 className="text-xl text-white font-semibold text-border mb-4">Add a New Review</h2>
+                    <h2 className="text-3xl text-white font-semibold text-border mb-4">Add a New Review</h2>
                     <select onChange={updateFormData} name="food_id" className="block w-full border border-gray-400 rounded-md py-2 px-4 mb-4">
                         {optionsElements}
                     </select>
@@ -61,7 +61,7 @@ function NewFoodReviewForm(){
                     <div className="mb-4 text-white font-semibold text-border ">
                        Required:{renderStars(5)}
                     </div>
-                    <input type="submit" value="Add Food Review" className="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 focus:outline-none focus:bg-blue-600 cursor-pointer"/>
+                    <input type="submit" value="Add Food Review" className="bg-gray-900 text-white py-2 px-4 rounded-md hover:bg-black focus:outline-none focus:bg-black cursor-pointer"/>
                 </form> :
                 <h2 className="text-xl mb-4">Sorry, there are no Foods available to review.</h2>
             }

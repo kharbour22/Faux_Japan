@@ -53,7 +53,7 @@ function SignupForm() {
                 />
                 <button
                     type="submit"
-                    className="bg-yellow-500 text-white py-2 px-4 rounded-md hover:bg-yellow-600 focus:outline-none focus:bg-blue-600"
+                    className="bg-yellow-500 text-white py-2 px-4 rounded-md hover:bg-yellow-600 focus:outline-none focus:bg-yellow-600"
                 >
                     Signup
                 </button>

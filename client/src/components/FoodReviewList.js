@@ -29,7 +29,7 @@ function FoodReviewList() {
 
     return (
         <div className="flex flex-col items-center justify-center mt-4">
-            <div className="w-full max-w-xs" style={{ backgroundImage: `url(/assets/Nori.png)`, backgroundSize: 'cover', padding: '8px', borderRadius: '5px' }}>
+            <div className="w-full max-w-xs" style={{ backgroundImage: `url(/assets/Waves3.png)`, backgroundSize: 'cover', padding: '8px', borderRadius: '5px' }}>
                 <input
                     type="text"
                     placeholder="Search by food name..."
@@ -41,7 +41,7 @@ function FoodReviewList() {
                     <div className="mb-4 relative">
                         <button
                             onClick={handleToggle}
-                            className={`relative inline-flex items-center justify-start p-0.5 overflow-hidden text-sm font-medium text-gray-900 rounded-full group bg-opacity-90 focus:outline-none focus:ring focus:ring-black focus:ring-opacity-50 ${showOnlyMyReviews ? 'bg-yellow-200' : 'bg-gray-200'} hover:bg-yellow-200 transition-colors duration-300`}
+                            className={`relative inline-flex items-center justify-start p-0.5 overflow-hidden text-sm font-medium text-gray-900 rounded-full group bg-opacity-90 focus:outline-none focus:ring focus:ring-black focus:ring-opacity-50 ${showOnlyMyReviews ? 'bg-red-600' : 'bg-red-600'} hover:bg-red-600 transition-colors duration-300`}
                         >
                             <span className={`translate-x-0 transition-transform duration-300 ease-in-out transform group-hover:translate-x-1 block w-4 h-4 bg-white rounded-full ${showOnlyMyReviews ? 'translate-x-5' : ''}`}></span>
                         </button>
