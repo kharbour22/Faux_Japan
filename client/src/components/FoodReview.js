@@ -5,7 +5,7 @@ function FoodReview({ foodreview }) {
     const { deleteFoodReview, user } = useOutletContext();
     
     // Check if a user is logged in and either has an id of 1 or matches the review user id.
-    const canDelete = user && (user.id === 1 || user.id === foodreview.user_id);
+    const canDelete = user && user.id === 1 
 
     return (
         <div className="rounded-lg p-4 my-4 max-w-md shadow-lg flex flex-col" > 

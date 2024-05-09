@@ -35,8 +35,6 @@ Sakanamono is a application designed to provide users with the ability to leave 
 
   ```bash
 
-  npm install
-
   pipenv install
 
   pip install flask-bcrypt
@@ -65,6 +63,8 @@ Sakanamono is a application designed to provide users with the ability to leave 
   pipenv shell
   
   cd client
+
+  npm install
 
   npm start
 

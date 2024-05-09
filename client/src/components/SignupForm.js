@@ -21,7 +21,7 @@ function SignupForm() {
 
     return (
         <div className="flex flex-col items-center justify-center mt-4">
-            <div className="w-full max-w-xs" style={{ backgroundImage: `url(/assets/Scales.png)`, backgroundSize: 'cover', padding: '8px', borderRadius: '5px' }}> 
+            <div className="w-full max-w-xs" style={{ backgroundImage: `url(/assets/Scales2.png)`, backgroundSize: 'cover', padding: '8px', borderRadius: '5px' }}> 
             <h2 className="text-xl text-white font-semibold text-border mb-4">Signup</h2>
             <form onSubmit={handleSubmit}>
                 <input
@@ -53,7 +53,7 @@ function SignupForm() {
                 />
                 <button
                     type="submit"
-                    className="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 focus:outline-none focus:bg-blue-600"
+                    className="bg-yellow-500 text-white py-2 px-4 rounded-md hover:bg-yellow-600 focus:outline-none focus:bg-blue-600"
                 >
                     Signup
                 </button>

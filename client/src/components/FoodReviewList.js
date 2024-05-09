@@ -29,7 +29,7 @@ function FoodReviewList() {
 
     return (
         <div className="flex flex-col items-center justify-center mt-4">
-            <div className="w-full max-w-xs" style={{ backgroundImage: `url(/assets/Scales.png)`, backgroundSize: 'cover', padding: '8px', borderRadius: '5px' }}>
+            <div className="w-full max-w-xs" style={{ backgroundImage: `url(/assets/Nori.png)`, backgroundSize: 'cover', padding: '8px', borderRadius: '5px' }}>
                 <input
                     type="text"
                     placeholder="Search by food name..."

@@ -25,8 +25,9 @@ function NewFoodForm() {
     }
 
     return (
-        <div className="border border-gray-600 p-4 rounded-lg max-w-md mx-auto">
-            <h2 className="text-xl mb-4">Add a Food</h2>
+        <div className="flex flex-col items-center justify-center mt-4">
+            <div className="w-full max-w-xs" style={{ backgroundImage: `url(/assets/Scales2.png)`, backgroundSize: 'cover', padding: '8px', borderRadius: '5px' }}> 
+            <h2 className="text-xl  text-white font-semibold text-border mb-4">Add a Food</h2>
             <form onSubmit={handleSubmit} className="space-y-4">
                 <input
                     onChange={updateFormData}
@@ -61,7 +62,7 @@ function NewFoodForm() {
                     className="block w-full border border-gray-400 rounded-md py-2 px-4"
                 />
                 <div className="flex items-center">
-                    <label className="mr-2">Food Type:</label>
+                    <label className="mr-2 text-white">Food Type:</label>
                     <select
                         onChange={updateFormData}
                         name="food_type"
@@ -84,14 +85,15 @@ function NewFoodForm() {
                         checked={formData.gluten_free}
                         className="mr-2"
                     />
-                    <label className="text-sm">Gluten-free</label>
+                    <label className="text-sm text-white">Gluten-free</label>
                 </div>
                 <input
                     type="submit"
                     value="Add Food"
-                    className="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 focus:outline-none focus:bg-blue-600"
+                    className="bg-yellow-500 text-white py-2 px-4 rounded-md hover:bg-yellow-600 focus:outline-none focus:bg-blue-600"
                 />
             </form>
+        </div>
         </div>
     );
 }
