@@ -41,6 +41,7 @@ function DrinkList() {
     return (
         <>
             <div className="flex justify-between items-center p-4">
+                <h2 className="text-xl  mt-6 mb-2  pb-2 text-center ">Menu Updated Daily</h2>
                 
                     
                 
@@ -54,6 +55,7 @@ function DrinkList() {
                 </div>
                 <div>
                     <h2 className="text-2xl font-bold mt-6 mb-2 pb-2 text-center  underline">Sake</h2>
+                    <h4 className=" text-center">(Bottle Only)</h4>
                     <div className="flex flex-wrap">
                         {drinksComponents(sakeDrinks)}
                     </div>

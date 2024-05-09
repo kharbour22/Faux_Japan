@@ -75,6 +75,7 @@ function FoodList() {
     return (
         <>  
             <div className="flex justify-between items-center p-4">
+                <h2 className="text-xl  mt-6 mb-2  pb-2 text-center ">Menu Updated Daily</h2>
                
                 <label htmlFor="toggle" className="flex items-center cursor-pointer">
                     <div className="relative">
