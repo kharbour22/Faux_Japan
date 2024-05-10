@@ -69,13 +69,13 @@ function App() {
                 navigate('/');
                 return data;
             } else {
-                // Assuming the server responds with an error message in JSON format
+                
                 throw new Error(`Error: ${data.error}`);
             }
         });
     })
     .catch(error => {
-        // This catches any network errors and errors thrown from the response handling
+       
         alert(error.message);
     });
 }
