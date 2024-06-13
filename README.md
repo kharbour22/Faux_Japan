@@ -25,9 +25,9 @@ Sakanamono is a application designed to provide users with the ability to leave 
 
   ```bash
 
-  git clone git@github.com:kharbour22/Faux_Japan.git
+  git clone git@github.com:kharbour22/Phase-5-Sakanamono.git
 
-  cd Faux_Japan
+  cd Phase-5-Sakanamono
 
   ```
 
